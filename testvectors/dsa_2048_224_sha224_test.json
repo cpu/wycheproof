@@ -1,6 +1,12 @@
 {
   "algorithm" : "DSA",
   "generatorVersion" : "0.8rc18",
+  "source": {
+    "name": "google-wycheproof",
+    "generator": "generator-v0",
+    "version": "0.8rc18",
+    "maintainers": ["C2SP"]
+  },
   "numberOfTests" : 330,
   "header" : [
     "Test vectors of test DsaVerify are intended for checking the signature",
