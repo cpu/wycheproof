@@ -96,7 +96,10 @@
     },
     "generatorVersion": {
       "type": "string",
-      "description": "the version of the test vectors."
+      "description": "DEPRECATED: prefer \"source\" property"
+    },
+    "source": {
+      "$ref": "common.json#/definitions/Source"
     },
     "header": {
       "type": "array",
@@ -124,5 +127,6 @@
         "$ref": "#/definitions/AeadTestGroup"
       }
     }
-  }
+  },
+  "required": ["source"]
 }
