@@ -1,6 +1,12 @@
 {
   "algorithm" : "AES-SIV-CMAC",
   "generatorVersion" : "0.8r12",
+  "source": {
+    "name": "google-wycheproof",
+    "generator": "generator-v0",
+    "version": "0.8r12",
+    "maintainers": ["C2SP"]
+  },
   "numberOfTests" : 442,
   "header" : [
     "Test vectors of type DaeadTest are intended for verifying",
