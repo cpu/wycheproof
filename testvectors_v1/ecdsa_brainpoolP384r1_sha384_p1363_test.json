@@ -1,7 +1,6 @@
 {
   "algorithm" : "ECDSA",
   "schema" : "ecdsa_p1363_verify_schema.json",
-  "generatorVersion" : "0.9rc5",
   "numberOfTests" : 282,
   "header" : [
     "Test vectors of type EcdsaVerify are meant for the verification",
@@ -92,8 +91,16 @@
   "testGroups" : [
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "04192ed5ce547d2336911d3f6cecba227f08df077f6242a9147a914e854e6e32d325fd23ccc42921dc4a7e4c2eb71defd3631e69079ba982e7a1cad0a39eff47fc6d6e3a280d081286b624886ba1f3069671ec1a29986d84fb79736d2799e6fc21",
@@ -1568,8 +1575,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "048a94164dc7654fda3cd4301d3e972024c2daba71d442128c7f3faecdb9e375a85aa80c4ac28889f258e6cba886d47636548b3bf1b675f2318c3d8ab7a1c281a33241c121b3590bfdf703c7cd4bae8f451886d989234c1b8c589614554d429392",
@@ -1604,8 +1619,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "0473f84ab63789301e88b4cb82cb935decffb8f42b2c9784c7544615b9076ec7a7ab94702ca7f1d9aacfb90537b5d368dc502cb7c8c18285994c7b19fa3e2401fdc26de54ffe006bb79bdd7852c666d730bdf76a16c0792a6c6681ed6b647fc81b",
@@ -1630,8 +1653,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "04895e8461eddbe21367a95b25cd85cd31e80ecf1f95539056fb7e10b4aa49900b2194d919b29cd9bf373a1d53ef571174767c02e36b935a65e5a9cbb35589a2a018482065c5e33da8ce483dc7f7fe441574f9e7ab0614bdcfc61022c780a30009",
@@ -1656,8 +1687,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "04618ad81912e4c31f23eab2f0c693b3ef8404074ab1dce01dc82a768151c9fa0393b4d6aeaeec6858d3f419957a5b997f31fa809b1b44677cc5aef1894846142c3e44bba6c471123fa14feb8f3aa9e92f769be549cef9c1d55bc6f1f4f841813d",
@@ -1682,8 +1721,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "0479583b4968b576811b567e1620e00b0aab8aa223c5e655b27b1ebeaf83bcd35f4205a5a0e51a2052fffe9fd23785c98f77357c8a1008fcb7a3579614c2ff47980fa9e44b6b5ea3f8a33c919dd2aea5dad0ca1a01a9e2106518b1642906e4f275",
@@ -1721,8 +1768,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "0489657bac216c3ac4a3a2d5afd342ad24a4eb103d4dbe2e4461e03c7011826513fe82bd06e17e3ae8eb5811da0bec88bb33ee1eddd5d49dd86e785fbfebb9288661964e6fbe0c07af9a4ba3145fc4be11e5484b650c97096db82ebb0ca2bb84ed",
@@ -1760,8 +1815,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "045876f414fa385b403a2d10da5d89b110344ad005bfaf8c759ab1e3561a39ff0db9ff91ec6040316e2fca3654a48c0e890dcb77f896ea475cb97672a8400329554c941b61b4a84bde1f8c8fc5250c29161fc3ca50458a41c77a48bb336882f2ea",
@@ -1799,8 +1862,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "04013ef807f7bd12ebf3eb449b1a780b174ac0b49f7873cc55eb96926a6759d31ad7915e1a9b32725ea35c4874148e146158eb75969fd51f89ff8eea7e3d2e57f7967eadd9dd19276c6fd23ff129dbcd334710361d7b81876f298e23e82fc4f13f",
@@ -1838,8 +1909,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "047a2017b44ccccd1feefa4e2678d0ed19b7c45c7335bbb3fde4937758a76eb6892ed537046e822d8f819e44ee15914b757d1b2da972f6534262b7126031e55f618f78cabcd516ebbc9d8308385934b2c9ebb9f98c630c85b253dcb3eac81ee065",
@@ -1877,8 +1956,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "0448936d9579659b46b476999c476a0d6f2e68c902b5af2c01dcb1e8f7b2fbb06eb93f1f427e836cb07be147c596494dc971c9f2de6c9ae7d343f27eb8ab54e2d1c93ad87131dc3aceac635b8d42996cb750e7e364fe4eab90d9d3e0516abd9c38",
@@ -1926,8 +2013,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "043d2f0f89e9359b97058e9008f9aeb26aeab7b41d91438a72a3a2737f0cc91a05a0ddde54212f8a5a234838b3e9a2e0dc31b168cdefd0b214b8190e30be9ce4b2f9a5119355d9b2558ffe77d7177709a9ea2b76853caa265c3b40f0bcf5908938",
@@ -1952,8 +2047,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "046b25f8c1629f7579e3c7ee4b029cc029b4bdbed88b9b399303e4a14352d1f3f6048ecdd062d37cba7b70bcbd587231e7621313f93d310f144bd3322582804639dd2960969a993a9f2a3609f856e1415a0a4dcf58a7864e41e2a8c80dfc158a30",
@@ -1978,8 +2081,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "045d082cde6086f8ea6994f46e9dc06c1c1d2c3a3c2dc5c97bf137653d9b2ed21101bad843d46e4b7925b9af7034c6d02112c7f56e65d233104063391fb3828b3990e6893d77746e42305e6a5ba111d976d693f595af858f19fac7234f7484c489",
@@ -2004,8 +2115,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "047407ca6c2a183f9ca1376609e9c78a8d080effad15a4f63cbb7a168e3c789b8b59ce4d3122ca08a86907ba487f717fbc3e2c56a9b3460a5136b213be8d48cb3dc9c7ad945b1dcecbf93fa6cfaaf8dbd70f1040b97ad8e3ac30f2e64fd7cc76d6",
@@ -2030,8 +2149,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "044fc32a5226820ec9c3fff2c74e0b36d7de028e59fc005f3807a3bd59892c9ad20dba7168ef9ed9bf99b25ed01bcfc6ca6a13da2e852777a6f99d04322a1b9fb4227684bf7c40d4d3ef92798003a3bf2da158d5686457c33d0e24be5c265fc473",
@@ -2056,8 +2183,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "047350a7d00d7719a318522ef4c5e6be24b3b2cb300c596f79e8dd31a4688fe65a54b2d7497a06821eecbaf31b2fa7cdcb4bd72fc7f05e32457fda0cc3f321157744f1841c30bd086e6ddd5bf415eb71ecbe36f0f3fd23d3c41487fb283e0e9794",
@@ -2082,8 +2217,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "0461498ad31a84eed102ba2712eb8a7bd92320bda4ac6d07b4326a30869d19eb1b96229d21efd711dcf73048bf166800e30cfcc13a0914132284dbeab6fcf5d70b34ca86a681157e4874abffaeebb69b8b71f69d332306567823dde5407ce739e8",
@@ -2108,8 +2251,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "041d21a6e6b2fc27821f0521d90ab0e38e3cc22e50654424614608f0d80fbb649bf3ce3437d8ab122d412415aaa4121bca67fb20763fbaef5201d4efbdb6629395d1a9cc002437a3e08a82a8a468bfb98d2323194f6d406a569f4bf0b99f440c3b",
@@ -2145,8 +2296,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "0424188e2bbb6e6503354d84ca83412460e6ab671c224c6ab86e841a8c8b0ed3ecac9e82ea4be74ffb46d4bcd2035255f25fd9a3457d25ffa1217f1018d657b8f1eff257e4cb5bbfcda52f1ba5bb1f46c4617fd750d4c7cf4dd39ef3df599bb400",
@@ -2182,8 +2341,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "046d5b9aa39ee9abd073e78967b4f60cb9afda7dbcda0b01a9db7116bf69acec858d451d2ae4fcbe21d1ff343ed571a73b47e554b0231432ff94a4e1dbb689760ffdf89ec7be2f2e93327476db287b947045af522d9a836995a9d434faf2de27b6",
@@ -2219,8 +2386,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "04033777362bf5001b883fabb5c4ab04fbe279be9a68388f34b7e6df306a14d6b8f49c11c495e29912ccc6bc439c0fe00822158fdd56b096056455486eca6151c353a072494a1dbb4bd7b7558ee0dd66147a7537fc34482e321a0a3858469f988e",
@@ -2256,8 +2431,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "04050592f34db0263df4c669b8991941be18237a1045bfd165ea4af385376564edf6654a0dff7b5d84474090f265c46b511545918cd8f22260ce21a584edfa0b1644488c997d956529262aef400cc0320ed27ddcec3bde6b9fd79b374af688fa9f",
@@ -2292,8 +2475,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "04082d4c490c6140642a25c7dcedcf0b12e83860e81f5d9650cbda534dff9f9835f673014f3c90a634e3b4a500fa024e2c132895fa8a88f37463646f211054c002763861d0b64d8fd7ee253ccd9e6c848aa85777c3dbc21fd90c8729fa0bce5017",
@@ -2319,8 +2510,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "0489f5564e19ca83d12acf49a19b9aff7ad367ea2a1534c7c073272837c6f66aa26bc8c50d4361d240b988992ed9cae1526f2ef5327cd8e502cd9bf16ded0c611cf6f52ad1c2cf59b085360d14dab801cf1f691e6e4b0f5a8ba530df8ba6d20dad",
@@ -2346,8 +2545,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "043eb325acf37a882d502a70f48e7cd658827b5724454512d96206240c9844a7817bff176cd0dc0b4e3a24947d15b296694d785f9663698973905519c85cde963ac3b4ddb5138827569144e975c3faa37fd41b87150f54957ae5282c7e99769957",
@@ -2373,8 +2580,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "047a80f2993c95280658aa0ae94efa15b972f6d32052f7f53b0344f5a9d8e7505733ce6ed6cd506f80c849dce9f984765f838672fcb7b1d3e28942d075555ed59b594afc6b5d450f40537acb455717f1565cf98831c1fd68ed1aa499ae4243f1bf",
@@ -2400,8 +2615,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "043665e2d0bfca1937aa0ebedf3e9d8edf5f5af1880c7e2c3781b2b3d39d74bb65cf4bf259646f4940cb78e5c5f9ef212118ea424f2f5a866bf459e0d8077061fa19943a218dc139cfed2291f559c0dab851466f5801bbb63e17795733ab595b15",
@@ -2427,8 +2650,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "04181b9fcadceb054a95ecf3fc1d76c96a7a0db4361b6f3dd26836dc68267abaeabe8aab79f1819754050b323f192eec71048ac15682a2dbb66d200806fe8502027c109a73413748c9887feb7afb54e7fbfdfb83276b5490c8164d26efd26f7da3",
@@ -2454,8 +2685,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "044aee626de33aaeb733246c099af23ae06da262f9e509b8f4ff3b82f905ec46baaf5789211f19874007ba2a39b6d512436dc849c2728b78163f5bcee5e704113c430e65184477573382bed7acf3d97a533ff044ad20f743f5cdc7c4ca27a0af2f",
@@ -2481,8 +2720,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "0407264bcbe25d2bd542e3c68d9d1c45a09a5de64615fd322a156465c4436aca922ae0afec0e40560ea0cc495a6843b8f04dfceb05a023c427b9a26820fc7aab1494cbb0b6d33ed7d6da0b951799f0c17c632df483e7f0abf08ebb1068684f1f35",
@@ -2508,8 +2755,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "044b56303a979ee98272dabbf30dd74764ce9263f8a5d04df8f97f5d908a4b71f0209bea87c2e7b43d1c9920b4604eeac316a6aaabf771fc49a1786d45507429b251a53b348afe08f20c7b486f257f32754673b9f3f010934bccbef91343f12f59",
@@ -2535,8 +2790,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "045d939c46f1b93492b3564e9dd0e06353d1c4241327b96f2d0c7c48df50d929f2599d3d1ff4a1ee4cce767c22e6ae490d2337fe84a27a593e4b0e01b474d8b46735070b54fb375aa481393599c5d44b2dba4ca16d77d027f5cf0aef86efa21902",
@@ -2562,8 +2825,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "04253e9fc91cbf897ddb29d8176ca6b359c187e3bc77b1794c6e2f69bee613118b0987ab705d6d4eb4b87a3799ec43debe5a628d2e1b958138b8a562caa7a24e7a89fb60c4851d19b4ef61232228420b928c9484d82cff0715e40244b411b83a5f",
@@ -2589,8 +2860,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "0437e9e758d46ac26400b63762f28e145b33eec8aa1530d1c6772db8b41f01345f3b8601487cc5bc4a54d29960376d9fd839e6deab02faf4d7446b64c4334c00284c421c2da2fd234e0f1d1c7fb7a08cec2f8e31607138f166055312533d1f1d01",
@@ -2616,8 +2895,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "044ecd7b617c0b469fcc37915aad0b77d4a975cb8acb57a269b2a9bca1495864c60462c194a8ff3ae2662c4b54dcbd4ffe2284cf3e91cf235130c081740e699245fca7395bfa1d37a0c097e6c4b22b73f860602575e51bba7d2871713d8d5a31f2",
@@ -2643,8 +2930,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "0458834acdc90a4d5c0e4a98e8fe203dfefaac241ccd731dad8880c29c3ffabaa6e5a4f3473c10d501de00b0e746d09e733d2f31b77f9a50218c98c5a1c6bb8896b9de5dcef92dda679c080f917e65e35fc66bb72b7c22ec96c7fd761c483d5cb0",
@@ -2670,8 +2965,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "046384a216b7a2adc239c8f9e2af706e94c7fbfd424365cdd74a76f87232610bc242b49f6d4eeaad68d9e71b2713e4f85c01fd9b61298e1434e5ab112221a94749d909cadd52c0e43eba07274e06db95514a870f9ffdcf47ca453b07b2979dafa0",
@@ -2697,8 +3000,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "044df898544c2b10dc3c4d3249fca5130e753d26e08320bd823926acb050d8b6a4feadf29bef07ecdb00e85b341f22069a003343695d1e0ac0a78b38490d97c1e90e4ff4ca0d2140b9101f1b63f29ca4f2bf9176e1600483916216bd35abce6741",
@@ -2724,8 +3035,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "043e955d284589775837c9b83dbcb49186d695d6b53f5771689f6458e40a2b6dad6254cbb227de4675849d11e0fdf321143c4f0ae8803367716186174f91b7035b35bf8490e49f9c46147b6d3b71d96f74abfa5e40f33c100f79d459624191cee0",
@@ -2750,8 +3069,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "0439c44873ccab023c4b366a646decb4beb5672b6d2140fa0fd200374aa01301008c0419c3392c589000816e1f18059a4c2b6104be5e26c657aa1f6fa4addf3ff52a45679800dd28cd628711f2d1c11153a36c6c42fba6954cd37fd252112de1a4",
@@ -2776,8 +3103,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "045d77134e890ac72f9c69fcc3f181ae746fefffdafc1dfc791cf33a22fb0f8e586188cf2d5d060ddb04004baf56191c9f0e7401ddcc47a09b5ecf2719cc936010a9371a7f7624e63e7a00550a13d035cf586d3b522c7fd06251adbb0f0aad3dd7",
@@ -2802,8 +3137,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "04607cd94c42f5bbfcf857a708ac163f0afc0a65c8d88725f18c4bf7eb7cf5d34aca6008a27b4e5fd9476134ed85fcd32c89f248290c59b8fb963e90bab9b0b3e313d3b8e0a6c8901455a22b7b74a108152c5b814ba575de8de07cdb8d67ba2b50",
@@ -2828,8 +3171,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "044b4afbd91746b1a4df6d0d717afc7528fa4a9dda9a62afee19a72fc0019aa2ea89a125bea7675506230656caaff52c735f5c3575bf669637efdb672477500f1fe37b45dcf879487ad6ca36c4147329fb741706ce9b928ce47bf6dc0f9e44017f",
@@ -2854,8 +3205,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "040d8b246c623188b7455716ac189b9af441676a1c41cd575754bd02ae4d6825304b961ddf0826bb161e3d63e9bc71f1d46edbeddc2d40dafdccac90ae85cd616a0ea1e4a08ae8fc3358ce7d5142eee8f3bebdc14591c4c9b15bff12b8cf08334a",
@@ -2880,8 +3239,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "0404d9d4a62d6eb02073e738b1e439cecd5440031911f45190eb6062a33535fc5269bcfc25d4afc1dae0ebad948d7732d8029af37e89a3cea7df38b020f624906fca6d944e1486853fe8e5ba9cfba2d74a852ec587d46fe49917c364418ef7eca5",
@@ -2906,8 +3273,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "041a4a55c9b0ce43d7ed78a98d9bf6459ccf349466fccc457598fc15a1d6956d8ce8348b2332fffb3d516b078d28d329dd73f45a4ce1f5dc772f3c3283af6564e6e410f9d5064b6484065966936693f62ac9940eb28914a091d2964cd843b41028",
@@ -2932,8 +3307,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "04373ac98f088268a86d136de4fa0ce2c41042cd33ed2d07250f53cd4ed43fa1da425da597bd5b413d56cfff954267104f069e0453bbbd79280316f8c1c161a846af379a941ed286e593e7f289ba4fff42458b273a3ba499574e134e7fb4a7dc19",
@@ -2958,8 +3341,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "047e6ab429b9e33a974f6ab9a49eb152c484575fad5d9bcddcb87edce16e79333a937276f36aec9121de450384cb20bb2e8595f6c2880d89198e1b625e65056d0a19a58d1d1c551bcc5dd39d281d726dad4108488c8f941ac983169cace3ecc71b",
@@ -2984,8 +3375,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "041fbb37f75195c3f2de3afcc88ad7eb32108144608943face3a890005ff2a3e0b558079c5842620f44adc0c38dd88aac551734f8eb827df929d7317714a29cf8ba432caf689094d00eb9d63cbc908ba76ca5b1f93d229477c960842940f4224d3",
@@ -3010,8 +3409,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "0407fa30c837c8ad029326a1d448bd27521b5d26aad4d8244b7242493df70172e6dd1daf5c7e07f4fa102f5c415a4ec61f0904527df877527f7d0f5a7f71b6d9c03f2de1df8804868e7337da35c9b1ffc9bf2e279c3af8a0786e6f39832cc6ed1b",
@@ -3036,8 +3443,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "0461397ae7fe8e7e894bfa689e5813514293a0f1b9f1090c0d9696379b61287a752a3f7d1d2480fe4127498d0eeda84c630c2fadd37ea36bfe532b5d3a0f101ddd3ac59458399648f3efaf5833dec1c8c8ece05515893553ef4d58120d37ce2ecd",
@@ -3062,8 +3477,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "047f166efa8d8416d922f57673a2180cfbb49e8d160d60ba5ec90ba547f3eccd22ce6afd99a0fb292cfd16b0692b9cab03418579e67c87b359912f6cb4158bdd7ea130b5007726df2fce319915deedc4f7e89ee23f786e25373c9937498bab81b4",
@@ -3088,8 +3511,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "0477c9c2e658b004ab6840d7c33a5e7eb5f93ba3a7c5b32f7275fd75b07c1c92f5ae31576b9cbca046337e6d6ea76c145e67c56010dd9749e2d90b3eb57ef1c4c73741233a32a6a4355b8c4e3a24bcf5986627c7480783161db1d2a5332bd75fef",
@@ -3114,8 +3545,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "0464d9a317d5b41af30fdfc7389460f357fa9978304d026b312aa5ca04a19bdc0c56440cfd14a0b060c3b8f4ee8d4a5a3777299b2280ab4c857ed2531e8db027f8c7238028bd7f7ba59bc80547d4f10da6f2e613580553406f0427ecbd7b75916e",
@@ -3140,8 +3579,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "04264ba447f80d721bf1e79877f27a23ee58565e88c49f6b9cd6448c024b6ff53aebb2b08cec22eb2eb38e30fd54727f01801887f9f94dce625ed1d56350a4b252e0dcfc0984928f25ad22a13135baf996bfa82809fbe79c0979670fddc9fba9e6",
@@ -3166,8 +3613,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "0404918040a58dc477a7245561273df2d8bd977e5fd39c40d3011536cb2b9cfee82e2ab5f539e5908dcbf3ff24c645db4e5969a9d8df5cdaafe3490caa4946acf5ebe3e93aab28a8d4a6f61e2c8e5c02dc605c75806dddddebe23915631159c1f7",
@@ -3192,8 +3647,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "0422e44ebe0a351e4c91f7bdfc0c0c3c6e1c679da84a32539c2dbb41ea31061b0825e3f34d7b0ad525261eb9e457c408196089e33034731ba8e9f95f5a234bf8d3539c8381f4d95510d5e0f145fd48205e5c60218c3f84b189c8e4fd5608b49778",
@@ -3218,8 +3681,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "0466ed49779ed6a7b10c812bc7ee7b47a5d11c5ea50277273da140bc1b0cf5b8210a6a737f7e9d92eee6d845137e5c44a28accb8f637385cf6519bfae3ed3ae4d0acaa19a260a01bd8cb53ad24dacab1954b20d1472cf3975e87cc733f329ab6bd",
@@ -3244,8 +3715,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "043024912041bc989a936fb4dcdd178b15e03a0aa94abafb4465b4a89d4416b7a8b029d47c17e69a25962ff3aefe862dcb249ee9252b5713e747a2da8aac2b961ee2b6aca157a44888748648fbcdc5661cd4a169bb92c9c1ce50a79a63735002a1",
@@ -3270,8 +3749,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "046c9393b00e9a62ce0b83674cdcca59b18d5b34246348e37c1d78898a522d813c49d08efc5f3f7ef33f3dc9dd1bc2e5c2000b9410ce04a64cd095ae1194bc1f514c7009a4e06871b557154cf492e7c57749487ecfcd04cb31426ab785ffa95e2f",
@@ -3296,8 +3783,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "042c58277aaa61c400d7036183af49c99a97fea5a8d5f8608c4c6ac7a282757e4dc4b6f92d82a10272f2a19696a48fa79f5a8adb770740669d6010e55f6625b141be469fe1779f4adfe64eab2e4a9ac5bf1c25b3de0b74b8f9644fc216010d9659",
@@ -3322,8 +3817,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "046e5f827e1aa225c4b95db52655f67d654bdc69a4bf8f49c19d1e65dcf12ca511505aa1726ca2f5cdf8ab376f94a0c5bd5daec6f35f1dfbc68fba024cc8c5f79ce9baa86adfd8d2ba53a798cdcc9025eb9797d3be207bc694abb338e43778ffdd",
@@ -3348,8 +3851,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "047fe852a7612a673df351f05afeafcbb16ce4cadf85681b2b5f46cc31ef33d6b695378e7325e9cb3185d7137b2b1700465cbd4c810076d135316887e94b14b4b0108db1c944794c398938d42176c32575b6428b3e37b602211c574acafef0911e",
@@ -3374,8 +3885,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "040a49dc359ed4fef683e462dfe685442cea77b733fd95633216794d9a61f7e1022d942a36e781a484a2b479a643469af4512ebd0966b68bfecf7a47021bcd9e6aa2703dcc556a9a443d16195aa145738fa36a4dff3d09481f4a86550a8d1f3545",
@@ -3400,8 +3919,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "04276715087495d52c4160d15446ebb4d758291bf5bc9ca87b56c3f00adc41fa452d66684152d3e19d2fc3ad5d289787ad367385d3c3f5c3c2c6c3166adcfafc3d204453cab8797d56e955fbf1cf421763a6653e40efd9035df8128135546b6261",
@@ -3426,8 +3953,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "045943dbd66c79fcb882936eccdd6d860c42e20727a2cdb29165c8426c9d192990b71d9a3c7f240e46acab2741b7ee9c7a461e5ab1db3eb9b51b3238d3ada33567d251d8fd0fbaf59aa1cfb40fe7b22e0277f166a32edb81ab6a8580f9b1fb3e39",
@@ -3452,8 +3987,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "045285d72925c87c75b6ad9955064182bf2debcb25c88d0606f6672863de413e549688a4fcfbe6689bb23dba2b757bcda64ef6b01766c95b66ff10496d5deebac4b4bf8c3bb4232c019f80b69d8ab0214ceaf5813027ecec133a5a5b971948822e",
@@ -3478,8 +4021,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "040786afb03dd791dbfc371ab51ffa288b7cedd90d6a35a3c3a92566f895f38cb18536137e010f1cfba2fbed70568d77b84eec840cca8b6f3f612304b602ffad8dcbae1786b2c2216e9a1e59a6b69628b52a408b6a083d727f3ccd0e706f9aeef8",
@@ -3504,8 +4055,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "0446690db403904228e4f736b1344791596628e85669d4dd01374b21274280b421e42f5ba3f3f2fadad27d4469be7d9bdb7e883b43c27217f606e0a5ba6c9df781c145776c0e5a8993f0ed65c6ded65a43bddd0fe7611485e8e8d9e7decdf2d8b5",
@@ -3530,8 +4089,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "048be6928acad44c9571b5c4015fa3ffae5e639e4130a1a66b473e5dfdfe93b68a8de89583666d4d699e8885469f9b1a4d83b1d5312310e445ae57c85ab1a3df8dbbb706a598fbc007efb602a14a5952fd7e7df0464d533e062ea211285c2f5c27",
@@ -3556,8 +4123,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "041886ddd282b023084953ef7d9e853a6adc1360cef7f56df7da0ca7bdcf4f3a5d227a730f9f20f9434b565dc4fa819e856a0f0ed8d7f28f916a4e727e55bf0818dcc84ed1132bd7da9f98ff95fb2aec238f4df9185b0982a6682c06c85e6a895e",
@@ -3582,8 +4157,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "041886ddd282b023084953ef7d9e853a6adc1360cef7f56df7da0ca7bdcf4f3a5d227a730f9f20f9434b565dc4fa819e8522aa0fa9cb45dd96a50efcfffb2739c638672238da287ed97318da83848c25001d85ae11351397cb1f1af94ad29d62f5",
@@ -3608,8 +4191,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "0489dd738efcb0f79811df6bec873485169450ada18e602721e61768be0d81e5d41381f24668276f32bfe31ff1c16bcb6b1f7a4d2823bcd73f236d90b6ea61d892026190e14317b5d110526e9e2675f03d5ef3fce87b5827a37e0cf19b4d3988c0",
@@ -3634,8 +4225,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "04795592a673e82dff3d77450194e5308d64f45f11f759f34f7c7b5b7cc6ad73f9bff8f6633cc20378cff2e53fb7a5303085b5cd4621665aac8435d8ce85b26d444508b77b282e91cd5315c701d2e5b66ba4c00bf7e1eb0859a13cc351d00041a1",
@@ -3660,8 +4259,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "0439d94ff8757dcdb67480cbc48e9679423e57de5a23232df0db1e0ff7e908614401e6cd8d615008ea8be51299d9e22de9438126d70d14e75ce41ea2f409be88e2806f7f73bd513731696bc59e7a2c1d44d5683d3bdc92baba1c2ada58809f8bef",
@@ -3686,8 +4293,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "0420b1fc8e2480a973e097337343490b12ae40652e4180dd4ae56df521daa9e391777c0d466f018af55519038dead355017232882bca3ccd6b375591f5b5096538ca5778355307e603148fde31f5acffeb4c6863541ad233de3f281ea0d235b6f3",
@@ -3712,8 +4327,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "044a391d79cfa82b943123d69ee2d1bc0e0b7e1e6f93c69123bfce0bd4f31a5e3434062dd0e1aa8b886ceba362c4d6720c7a2b0543a156f1934e02d31e81d5d2785a71d541cc7e1e6e6132ebee42111f52a844937260719056ae7b10f751606c41",
@@ -3738,8 +4361,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "0436854adacf83ce5f0e4422406d7b6f7db63d73d4c892a01e975ef6ee6b71a9334c9d57ce6ffcdb1a2e4174ddba799e127d619672035db4fd73e5e4b4ea920b74f2e70fd24ebca49d22fdb11e96b7867fa1838ca5babcd9dd096ab85e2f97b5ae",
@@ -3764,8 +4395,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "04804e6c71e493b783ecd375a4edcf86c77b1c2df551bbc73bed8516e4d11ce51a1dd081e19aa6f51c656818b853962178580bd6b2c4eabcf5b3741e6b7d59b0e7f2bddb247f5f9d6751cf09e3c6c9d1f7c27c0bb8d21e77a80ebadaf90af8b0d0",
@@ -3790,8 +4429,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "042c115772dd298612197a1c59df9c25a86ac16fa4f27adf74bcc673bb4a6a4bb5d0b5b64470d5d26e0300922ab723732442f6ec209e27ce0b127d334745272643d3666bff54927419764de52322ee1696e620d15e0eea62fed0f20efe6c91e1e3",
@@ -3816,8 +4463,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "04295778c9a3be2b373450f57daf10de66d32441750ac4289f6751ff61405ce0237f64e28ac5281a81d13fba81a8454e584c9f3991d615512faf0dc9107193b1b6f5cd684356ca51504d15c1ca4ba00b21c7c68eb4683222a8211e4ffd56da0e06",
@@ -3842,8 +4497,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "0465a340bc68f3fcead4f04277ee8675f9c17bc8c88426c5ba0313b8ce7da58d92ca9a0ffa32c7eee195857d860ba1eebe4dcd5be3a6778008b36ea19d902d93dd488f6fb65dc0719521553b39cb3c524b12681d2e07a8ef720cdc15011c23ba9d",
@@ -3868,8 +4531,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "0454a03902656bfaf4d6a54ff3429d9f9719bb61e6caf000e100992b31700e780e0f73f51614954acdddcaaa8b2311195b04ad3b19b01e150a39dc0cfaecc6498b18138ce612c492795687a488522644b3ddf7462c3c359bd091b7d39469571879",
@@ -3894,8 +4565,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "0446d10d749a47a4d3f25b6f28951a11f01a54c2413957a477162dabe0d08d8ae9b6a9f44b68ef341fb820b0c24c7a1c0e671ff166cd35d2f3cc821d58fa18e35d25e6033b9e790fce4818f9e570921c0034b381cc9ad254eeaf1b386e511b7c89",
@@ -3920,8 +4599,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "048ae92de10b244ac7f0deb6b102d075951d8c13b2960c2e98d7fb42b8abe90fd07a4a21b86eb4c77efe9adb6725676d1736063f3407c71627acaa83be9029c7a40e8aa896cb68a9c2fa2aaa1079035a283181cd3f2723b221d5a8747ad392a0f9",
@@ -3946,8 +4633,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "041d1c64f068cf45ffa2a63a81b7c13f6b8847a3e77ef14fe3db7fcafe0cbd10e8e826e03436d646aaef87b2e247d4af1e8abe1d7520f9c2a45cb1eb8e95cfd55262b70b29feec5864e19c054ff99129280e4646217791811142820341263c5315",
@@ -3982,8 +4677,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "041d1c64f068cf45ffa2a63a81b7c13f6b8847a3e77ef14fe3db7fcafe0cbd10e8e826e03436d646aaef87b2e247d4af1e01fb010d823eaa83b2ab83efbb166c8cb27865dfee67fe4f3115d4c98625e7fb9e8d6108188b996044c4fcd20acb993e",
@@ -4018,8 +4721,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "046c9aaba343cb2faf098319cc4d15ea218786f55c8cf0a8b668091170a6422f6c2498945a8164a4b6f27cdd11e800da501be961b37b09804610ce0df40dd8236c75a12d0c8014b163464a4aeba7cb18d20d3222083ec4a941852f24aa3d5d84e3",
@@ -4074,8 +4785,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "04462117d2e33a7db1b95c8a6a3c7982f83da96817e749718caee7b6aa9c9da4e8f2ff7951674eed2b569ab846f59002a850e6606a9726a9209c9e945fbf6cbbc9a487c4a4d81c52ac3684c26c3392b9bd24f7184821be06f6448b24a8ffffffff",
@@ -4120,8 +4839,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "048cb91e81ee5901b71a59a4f7c8174ae05fe3ba00f699dcbc3c9233265c640587b3c165593c2d76b5ffc4b8dcbcb0e6553a0e5d14f2d0e8efe2bd8aa260d8ace06bf964c51bab8207070a2d30410bb6b87aeecb7fff802f2d4ea3caf6e0e7e726",
@@ -4166,8 +4893,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "0469ebf332e1eb2455324a7572a17977a4e2955108ee8bd81bd6d1f555d608687f5bbb39858ebee304985baa7d09c830bb672b9c96684dfc007f015e39cdada9fe16db5022bfd173348caafc528684621f97fba24f2c30e3dc728772e800000000",
@@ -4212,8 +4947,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "044fb5688666673f104287428b5bae6bd82a5c69b523762aa739b24594a9a81297318df613f6b7379af47979ae7fffffff7e2d325b41fe831a23cb694cb80a30119c196143536ee334416ba437a419054c180a945154596b83d7f7c3a6b6059645",
@@ -4258,8 +5001,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "0434770c73a7e42ce7a57d1de6e54f35f1752047f6513584c7b14bca17d7abc499f8ab037c70fd2e13a8b97b2ae263688622421615ba363f1ffe9a8f2fe0f6e246fda11462a3ec000c685e09a90dbcdc2af6467f9ee69b5e7bead9b8461f4a4be0",
@@ -4307,8 +5058,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "0486f0fc89b7861ec3bd582161aecfc95789ae402459eb7f3015b7dd24e20fc9b005c635fc290a0e2a9ff35863b7b82e3e01ebba489e923dad88146077914e3ae5c575e1bececec710962a18ffd91005776c4d9e4bd952c793587a70291ce478b4",
@@ -4356,8 +5115,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "04082f7dceb585c5ba4894b0faf6604da888a311ad9f41731a1d3937168a10b0795a1fae496cb9a90739e1c0a6e531e8072c3b8568eaa1c6f541a665ce7a66f78ea2d5893103e6028add62356492d8b5ac6ab8901d59621c33416c33981bd594ec",
@@ -4405,8 +5172,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "046afe4ea7705492bda308b789d70da49457dde825d5258960a7a366e4665af9d326392c2672165ea4bbdc33374d88e7498475e6937a10a6f6a50f23de9126ba04e5650a1cd06a8066ca423339fc2ce53d91482744a4cdf2f937f76f12aae3f630",
@@ -4454,8 +5229,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "044bc65262c22d322ea89146ccb5c60c4287b65a35228743a5b9dcd15493bd8642478987c421637dd0715079ec90fb8cd47a45557ef653d0773dbe2630f8e000629ed8293e1aa4a96f3b159a245aa35ad92a1019c7e09a9ab75ba43c0786928237",
@@ -4503,8 +5286,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "brainpoolP384r1",
         "keySize" : 384,
         "uncompressed" : "042ac393f20c110e3f97065304397eae0e23187b2b6163dc66083e82aff568426843056aff8dc23eebce297f747830e21734c935671391c6efa8b46c5c37b3f84a82e429a7580feb9a1383b55c83a9398e8ecc7b15d699e63962329102a1576f2b",

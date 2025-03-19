@@ -1,7 +1,6 @@
 {
   "algorithm" : "ECDSA",
   "schema" : "ecdsa_p1363_verify_schema.json",
-  "generatorVersion" : "0.9rc5",
   "numberOfTests" : 217,
   "header" : [
     "Test vectors of type EcdsaVerify are meant for the verification",
@@ -88,8 +87,16 @@
   "testGroups" : [
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04be74d8dd1d5654265384f74227ab0f8534b5a4fe2ab8e5bfeff929794d8dd9c2e3be40e6cf49ad49",
@@ -1254,8 +1261,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "041b1fa19f5645059f46ec5aa9d033628f079f3218e2809349c90a70bb00304b52bf31ac028c3dcdaf",
@@ -1280,8 +1295,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "046e51c8f537050b79603669709c6da62e73bfac10dab424e0fec22f8c34d217dd6eb7a5e641fa16b6",
@@ -1317,8 +1340,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "046985fa6606489ca34d12bd1b88b99210848f35f070c73452b4a49c42db8310126eff3bcdd38def98",
@@ -1343,8 +1374,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04375b8cf4be2e735f59dcfae585d02d81dc4069d1661fa28b635b5e7506d856c0048a7409b52a1f71",
@@ -1369,8 +1408,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04012a78f3ceb2c5606f824b90b4151a7cd788c3c86216521c8b038e7080bb5601ac8b49e96826368b",
@@ -1408,8 +1455,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04cee7f5abdb03bb603a30a7a781d2249708931e28f459dfe37fef1cc13d5832452381cc179e708728",
@@ -1447,8 +1502,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "0448c7400e22d2ef7354b820eb662105e1b6e44a60a329f8bd69afd5aa91d4e18d3cfa2428930dee68",
@@ -1486,8 +1549,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "045a191057dd186238079c49edebbd5282e05c82cd5e49fffac60fe19a32b73919f06527e133a191c1",
@@ -1525,8 +1596,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "046c89066ca8e1ecba5accad667f0f259b69755712c600211adf86d318ee6bc9b738e3b62605c4ad8e",
@@ -1564,8 +1643,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04c9b7324fa0f75ba01219b93f251cf862284369613bff637e05d8f6995bc0cbe67e3f6232c422e948",
@@ -1603,8 +1690,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04c0331276460c47df3dc10e04673a412d920c1dc8ce86721667acc45d83812731deb94fb413820693",
@@ -1652,8 +1747,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04a75b4e571e3db2c740b924d629dd23ab438b527f35054fd3e871beba636a91652c9d76a96c513f7b",
@@ -1678,8 +1781,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "044e93629502fc5f1e2968ee25556e14f1d6fac0577b892be36a100c193a9bd21f6542611a8c8972f9",
@@ -1704,8 +1815,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04079fdc2ba58d2ce63611b3459035261405e179dbdc027bf8924259b02fc4aa144b7dcb58e60eb365",
@@ -1730,8 +1849,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04990cfd22fb6aacfd6cf03761c7e57aa2a5d777d85fce9841ca3a588d3a475e079971814d3ae9fa44",
@@ -1756,8 +1883,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04ab206289a1885cc739095c9a40edd81e8d5b70e6b8fcf0d4a8ab3a5bfb2e0fba0a093a1c16339ebe",
@@ -1782,8 +1917,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04e76b9acb3c2fe6f5f4846353ed5070886b25c6836998969342fa39157ba598d281d3be12b987a034",
@@ -1808,8 +1951,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "041cb1f341b3d151f08905e444343062e2532b30a8d24cc43be89f0512d01d1ac8ed50fca3aaa431a2",
@@ -1834,8 +1985,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "0411eefaee3225694f4a8207a9089865f2d45016de6baecb47f56e95972e1cc8aef8af59c0acad0d8c",
@@ -1871,8 +2030,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04a666016c4e863ccffa335d53c19e187221d3f6b7a7f8b143d405c8ea34f4eaa9f28b546a93ac4480",
@@ -1908,8 +2075,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04753c75347409919530b1daaaa70c130d03bf2ac7c8b6545191580299e531fc192e79277e03558444",
@@ -1945,8 +2120,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04d19c19d0ff227ec23dcbc9a93162fd08d468278c37bbffccfaddcc234c99a4c91f00184a3c1e443b",
@@ -1971,8 +2154,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "046b54692483b37d1cb63c0ba6b5c74af4fbb5b33667ea2957b75513d2ae6d1a2ea9ece586da947c9b",
@@ -2007,8 +2198,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04fee31ba75a77f205d449bfffd935f6e60948ccbe8b8581e9a37992fe588314011b3c4edd6104e346",
@@ -2034,8 +2233,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04c0e913d431fd45e1aa43131346377d6b6670ccce8c986800f1cb533a8cf85e342bd55e47a8c620fe",
@@ -2061,8 +2268,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04da842eb0f1d2e0f5574d53631fcb1351d3979fbe615d3c9713ac1412f459ef28a4b6af7b642db577",
@@ -2088,8 +2303,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "044692fa19ebf23568d178178b763d9a3dce8965148827169d104a1bfcf56cbcd3aa8af2ec18af8835",
@@ -2115,8 +2338,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "042e40829bd176609748ced0723199b241d3e6e98732dd8ebec11e22d315819683f0ee61ac8e518bea",
@@ -2142,8 +2373,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "044cb86a91a19896a18f47471780816a273e5e20141fd4e735e142671476ab29dedcdf79eec12b2e5a",
@@ -2169,8 +2408,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04ebf5cc9045cb56dc8524a4d55394ca6a0f58acfe440d1a9f1da0652dd99903eb1b17e579c4e45716",
@@ -2196,8 +2443,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "042a2017a79e571fbbec6829488227bc7e6cb2d5882bf47a8ea2e0de9d6d55fbad7575275fefa5f0f5",
@@ -2223,8 +2478,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "046b7f4d0a854b3ecae63ba2e63b24312277cf3d4fe4c35ad1d824efe7ab512964333d61fd316e0431",
@@ -2250,8 +2513,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04a2cd0d056b3570de5839c31d9627589fdb85d7a35aa78f75747791fe9b94f6718018eb102b0b8ae5",
@@ -2277,8 +2548,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "043b0cdb1819c59e38e4f8460fba0d3e324cb08241bdcb42c2ca039e5a8071f20ab1248a50f0fb3adf",
@@ -2304,8 +2583,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "0423d7719e3abf4ad5fbda1cfca5caba17e258f30db2d5902de25003e933304273a5684076977cf22f",
@@ -2331,8 +2618,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "0438cbefd21b9c1fb5936dff37a1a56e69eab4aea175620f851c610de6566ebacff24799b292f062af",
@@ -2358,8 +2653,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04ebe4094ffa91819212f388679a03cf71bb4804bb2e3d3984d88b7a8672c5bc17bddbc6e6b6083975",
@@ -2384,8 +2687,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04406655dacc20bde5d98ad97aebe4c802b956d6ca46414ac3bae4c1036dcf0be063499416c8a3b4b2",
@@ -2410,8 +2721,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "043f1ba8aeeae79f6d241fd8be46ffa6f3568723b11dc482a95568e8e6cf5025cbf5b8fef9ee4fba1b",
@@ -2436,8 +2755,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "0447a6a457ba4e369309e211e0ee107e52c5eefaa82236ef54f95d209f58b74adbf17cd416472c4516",
@@ -2462,8 +2789,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "0441f3d434600a3f8a8a31aebe2cddfe2bc2b0d6e3133cd88bbc0a4d81603015f3dce1ea82e1fa49dd",
@@ -2488,8 +2823,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04534a6949f782f5d4eced5ba6631c12be9f379f1797cd5d75ef0cf2cef901a3dc4e1d9e033033ec4f",
@@ -2514,8 +2857,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04c1ba77b68c24397599f5eebc6b4a48f4f8caf4c53786ae759de63750382753b333576f5c1b26c540",
@@ -2540,8 +2891,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "0428a2173e9bcd94c46d5dd3d160c8d3c6f5f392cb77ebe984b44814ef24d6d2570ecbea704bf587a0",
@@ -2566,8 +2925,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04fb75a1a2c846d22d787e73d1d7bc7c81b27ce6d44f5ca24aeedd2e6dc1ed2c55f59ef00ce44f800e",
@@ -2592,8 +2959,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "0404436adf3f58cab7a2f5dc07d207816dcb1ea7a5b3899f380ab7f9a8d385933ec57cac4291a7a6c6",
@@ -2618,8 +2993,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04b5594d926de21168b0f60962e720c7623563158e47a500835967a864bcd75d14ae3780ca0f154895",
@@ -2644,8 +3027,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "042df812587ffa67e82da47bce7b72446b7235ea749569210bcbb40d4fd9ce06d58f74b8ecc964bdfb",
@@ -2670,8 +3061,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04e3011e8fb90bfdf17424d59d0f7c9757e0a9ba8cab28c585258001594b87d83dea00294c4a4ee79e",
@@ -2696,8 +3095,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04c2fb0180784a8f5074304cb708002635e844b3d5c8eff920e00d4ba506c58ca250fcf641b18e6f61",
@@ -2722,8 +3129,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "044b4e5f5747dbd6ff941b8e7dcedb35377375225ad2292389c374d7d22668c5b0bf439c585c11d649",
@@ -2748,8 +3163,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04d42fdd8bf04a07864f49cf7a63b1bfdd98f6de072f1de4511955122331be5c73e46969bc940c8d5a",
@@ -2774,8 +3197,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "043943713524548260c840a4c833091e2682bac59805acb1d6bca1c685ed1bca4d05dc6ecfb8f22206",
@@ -2800,8 +3231,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "044c21a2c434cac9188f48721e1d0b160d5e3d850273d7e1ccd671a4f7ad0b9b150d4c64a2982191a6",
@@ -2826,8 +3265,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "042d36e6f01f0646f272289d73500e4a2fb74502945500bc561c648880fe99476b80b19cc3dfa3169f",
@@ -2852,8 +3299,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04633842757a9dc3b198de959bc34cc10ac9539be214b55c72f731cbec1a6cc80c30c9a868dee85233",
@@ -2878,8 +3333,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "0403688c836288d11d9978ac2cd41ed4884e0745551d524a23c8b8871191dee13b6ed4b3dc8ba20105",
@@ -2904,8 +3367,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "0437bafb3cba163d05559ca3639906d764b3a213bab30c713077a32dec18465e1e73568066bef58532",
@@ -2930,8 +3401,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04c66d00b9cd6b5b5903b2ece209470e712b96f515c9748522a17b59a60e74c69d7de161a5f9ffb532",
@@ -2956,8 +3435,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04fe4479b039c9781af875e51a40a1988f99e4777bd4b01aa8430b9a6b271ed609cbe59ad97f189bf5",
@@ -2982,8 +3469,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "047a3723db1ff831198e0f78add2c3b1c3b888d444125049ac5b9296d97a8989085f5e26f1b27a606b",
@@ -3008,8 +3503,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "049d0ce306a8c0ae72ab613c6c300680b23a5093d18d096766e271f991f2d0d37f73b990480375ada7",
@@ -3034,8 +3537,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04db6a0bf3b46e770976988c7e90a9749c6921e3876be8958d44945e9c7fff210906cde88d02674901",
@@ -3060,8 +3571,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04142b1e76f507c710c779cd9ddbe7b26ce567203cf8face07dbd07b082d69b682443b9b15e15db739",
@@ -3086,8 +3605,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04d09d259f08eef381512ece8c5022f1e368dae62b31de3c17efbd3f13e8f8cac2546cfb6debf9ee3e",
@@ -3112,8 +3639,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04c8faedf1be8ccfd14b2f1c140700282ef12ced9fc4a328ee1fd457cc71c14009225826571264d7d5",
@@ -3138,8 +3673,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04c49a2de709bf46809e0daecbc359de43e56728a9baa96a39b7f0fa137256ff479ac7d974e18bdd35",
@@ -3164,8 +3707,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04c49a2de709bf46809e0daecbc359de43e56728a9455695c6480f05ec8da900b86538268a1e73cf3e",
@@ -3190,8 +3741,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "0498defbbf1a0a86d2cfee186065c697f65f471f99e186edcd9ae13a68a8f3030691b2ab20a8b418c6",
@@ -3216,8 +3775,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04d3cf5669d7a6aa345133a0ff9f56a88c995a340d94f884562ce27b0b67e0e80e486c4d4e2264e651",
@@ -3242,8 +3809,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04c2e0b6b5d370f374f3b2f5a2e4a01e2bf3c2e1585f6879f63a40a9cacc8343214ec2925c47f1d18a",
@@ -3268,8 +3843,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04b43dd1c55ca1a5af0e9ef4f3b3d30c70feca6f4d4fdc2b3171e117fc3e058b7d0ba8818f977ca6d4",
@@ -3294,8 +3877,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04f3be38c3aeff9324d740bc7adb0fea5eeb9ea64bad0a634a2d199bd2023affd7a7546b645fd0bf78",
@@ -3320,8 +3911,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "040a9c2a9de3f46939ef33a03a607090ef3971037d7742033e020fc35f676fc650d170cc300deb261a",
@@ -3346,8 +3945,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04862e2eb41fa97389e6d9a5809f33c476255e851c6c97ca144a98c842e706d73431d90a366dfcac6a",
@@ -3372,8 +3979,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04a896b2ce7de0dc53d813053a64a45053f9e6341c8f3b7c374dc223c0ff5e32cfc517856ae25ada3e",
@@ -3398,8 +4013,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04a6b2f424d53ab1dce8ded84894b7c935daa2d869576c5baac08c1c5ff45e2b4f5e2c743e24661c7d",
@@ -3424,8 +4047,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04299d0559bcd39fb4a5287989d5a02a93ea21db17dc64a6f176f66233d1ccb92bcdde100d39793cd4",
@@ -3450,8 +4081,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "042d785f5990bca636e04238d50ab5e3b97c9cef0d7d41f1eb8e50f07924c775a041567268fd4ac49f",
@@ -3476,8 +4115,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04c0b952451eafffe6b5dee5409e8520622ae877f62730450893af945fe327a600458068bbe2ba2ebf",
@@ -3502,8 +4149,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "04c05720b3bd92b0f8c72bf85c077216621723402083a1a12194eda0a5aa53f17f7bff65d6bf5fbb08",
@@ -3528,8 +4183,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "043b4c382ce37aa192a4019e763036f4f5dd4d7ebb938cf935318fdced6bc28286531733c3f03c4fee",
@@ -3564,8 +4227,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "043b4c382ce37aa192a4019e763036f4f5dd4d7ebb6c7306cace702312943d7d79ace8cc3b0fc35c85",
@@ -3600,8 +4271,16 @@
     },
     {
       "type" : "EcdsaP1363Verify",
+      "source" : {
+        "name" : "google-wycheproof",
+        "version" : "0.9rc5"
+      },
       "publicKey" : {
         "type" : "EcPublicKey",
+        "source" : {
+          "name" : "google-wycheproof",
+          "version" : "0.9rc5"
+        },
         "curve" : "secp160k1",
         "keySize" : 160,
         "uncompressed" : "048c8b7f800bc9c5588b4970e7559eca926fa38e7b6c5d8223426e1cf8d2a2791ab710a14305048ad3",
