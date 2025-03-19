@@ -24,10 +24,6 @@
         "pk" : "7d4d0e7f6153a69b6242b522abbee685fda4420f8834b108c3bdae369ef549fa",
         "sk" : "add4bb8103785baf9ac534258e8aaf65f5f1adb5ef5f3df19bb80ab989c4d64b",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b65700321007d4d0e7f6153a69b6242b522abbee685fda4420f8834b108c3bdae369ef549fa",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAfU0Of2FTpptiQrUiq77mhf2kQg+INLEIw72uNp71Sfo=\n-----END PUBLIC KEY-----\n",
@@ -629,10 +625,6 @@
         "pk" : "a12c2beb77265f2aac953b5009349d94155a03ada416aad451319480e983ca4c",
         "sk" : "0a23a20072891237aa0864b5765139514908787878cd77135a0059881d313f00",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b6570032100a12c2beb77265f2aac953b5009349d94155a03ada416aad451319480e983ca4c",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAoSwr63cmXyqslTtQCTSdlBVaA62kFqrUUTGUgOmDykw=\n-----END PUBLIC KEY-----\n",
@@ -730,10 +722,6 @@
         "pk" : "d75a980182b10ab7d54bfed3c964073a0ee172f3daa62325af021a68f707511a",
         "sk" : "9d61b19deffd5a60ba844af492ec2cc44449c5697b326919703bac031cae7f60",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b6570032100d75a980182b10ab7d54bfed3c964073a0ee172f3daa62325af021a68f707511a",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA11qYAYKxCrfVS/7TyWQHOg7hcvPapiMlrwIaaPcHURo=\n-----END PUBLIC KEY-----\n",
@@ -767,10 +755,6 @@
         "pk" : "3d4017c3e843895a92b70aa74d1b7ebc9c982ccf2ec4968cc0cd55f12af4660c",
         "sk" : "4ccd089b28ff96da9db6c346ec114e0f5b8a319f35aba624da8cf6ed4fb8a6fb",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b65700321003d4017c3e843895a92b70aa74d1b7ebc9c982ccf2ec4968cc0cd55f12af4660c",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAPUAXw+hDiVqStwqnTRt+vJyYLM8uxJaMwM1V8Sr0Zgw=\n-----END PUBLIC KEY-----\n",
@@ -804,10 +788,6 @@
         "pk" : "fc51cd8e6218a1a38da47ed00230f0580816ed13ba3303ac5deb911548908025",
         "sk" : "c5aa8df43f9f837bedb7442f31dcb7b166d38535076f094b85ce3a2e0b4458f7",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b6570032100fc51cd8e6218a1a38da47ed00230f0580816ed13ba3303ac5deb911548908025",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA/FHNjmIYoaONpH7QAjDwWAgW7RO6MwOsXeuRFUiQgCU=\n-----END PUBLIC KEY-----\n",
@@ -841,10 +821,6 @@
         "pk" : "278117fc144c72340f67d0f2316e8386ceffbf2b2428c9c51fef7c597f1d426e",
         "sk" : "f5e5767cf153319517630f226876b86c8160cc583bc013744c6bf255f5cc0ee5",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b6570032100278117fc144c72340f67d0f2316e8386ceffbf2b2428c9c51fef7c597f1d426e",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAJ4EX/BRMcjQPZ9DyMW6Dhs7/vyskKMnFH+98WX8dQm4=\n-----END PUBLIC KEY-----\n",
@@ -878,10 +854,6 @@
         "pk" : "8fd659b77b558ed93882c1157438450ac86ec62d421d568e98ee236f3810295a",
         "sk" : "d7ad3f1f6bbe0477c3c357a806a19eb41ae3f94025035bc87f281f8ee9fc0e34",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b65700321008fd659b77b558ed93882c1157438450ac86ec62d421d568e98ee236f3810295a",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAj9ZZt3tVjtk4gsEVdDhFCshuxi1CHVaOmO4jbzgQKVo=\n-----END PUBLIC KEY-----\n",
@@ -915,10 +887,6 @@
         "pk" : "2a606bf67ac770c607038b004101b325edb569efd3413d2d1f2c3e6b4e6e3082",
         "sk" : "ad9b22793336fcdac10e136c4deea599be187a38eef91c1cf7c7a4ec884dda08",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b65700321002a606bf67ac770c607038b004101b325edb569efd3413d2d1f2c3e6b4e6e3082",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAKmBr9nrHcMYHA4sAQQGzJe21ae/TQT0tHyw+a05uMII=\n-----END PUBLIC KEY-----\n",
@@ -960,10 +928,6 @@
         "pk" : "c9c946cbc5544ac74eef491f07c5881c16faf7ec31ce4aa91bb60ae7b4539051",
         "sk" : "04a6553d68a9baef78a2175af375458eaa01cdb77350c61e282ef5f0c7116599",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b6570032100c9c946cbc5544ac74eef491f07c5881c16faf7ec31ce4aa91bb60ae7b4539051",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAyclGy8VUSsdO70kfB8WIHBb69+wxzkqpG7YK57RTkFE=\n-----END PUBLIC KEY-----\n",
@@ -1005,10 +969,6 @@
         "pk" : "32ad026f693d0d2afe7f4388d91c4c964426fcb9e3665c3ebd8650009b815c8e",
         "sk" : "c367c8d2ebeeecd70c1e8985b70c3808b75657f243b21ba4f322792540e92257",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b657003210032ad026f693d0d2afe7f4388d91c4c964426fcb9e3665c3ebd8650009b815c8e",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAMq0Cb2k9DSr+f0OI2RxMlkQm/LnjZlw+vYZQAJuBXI4=\n-----END PUBLIC KEY-----\n",
@@ -1106,10 +1066,6 @@
         "pk" : "c29ec1894e06d27b4e40486b4fa5063d66a746c7f9c323b12203c03b72b8b78a",
         "sk" : "56c1e22d616cbb6dea869288b4b1c02bb98696583c2f6e650013a03e17049c62",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b6570032100c29ec1894e06d27b4e40486b4fa5063d66a746c7f9c323b12203c03b72b8b78a",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAwp7BiU4G0ntOQEhrT6UGPWanRsf5wyOxIgPAO3K4t4o=\n-----END PUBLIC KEY-----\n",
@@ -1151,10 +1107,6 @@
         "pk" : "cfda5b899e35764c5229e59295fe1222b7ddce176643697c29e46ecbba10cf10",
         "sk" : "b7d2f64276df417fed27d8e15b4e90f6fd93dace707294c338bd32bc4bbd8fdb",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b6570032100cfda5b899e35764c5229e59295fe1222b7ddce176643697c29e46ecbba10cf10",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAz9pbiZ41dkxSKeWSlf4SIrfdzhdmQ2l8KeRuy7oQzxA=\n-----END PUBLIC KEY-----\n",
@@ -1220,10 +1172,6 @@
         "pk" : "529919c9c780985a841c42ba6c180ff2d67a276ccfbe281080e47ab71a758f56",
         "sk" : "7d597c3b7283929d07ed8f01f31d2596823e5e46ab226c7be4234d1a9dcaef37",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b6570032100529919c9c780985a841c42ba6c180ff2d67a276ccfbe281080e47ab71a758f56",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAUpkZyceAmFqEHEK6bBgP8tZ6J2zPvigQgOR6txp1j1Y=\n-----END PUBLIC KEY-----\n",
@@ -1265,10 +1213,6 @@
         "pk" : "2252b3d57c74cbf8bc460dc2e082847926bc022f09ab6ae95756362bfd1167c1",
         "sk" : "f401cee4bfb1732f0e9b8d8ba79469565c3115296141dbdf7e9c311a0ac1823b",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b65700321002252b3d57c74cbf8bc460dc2e082847926bc022f09ab6ae95756362bfd1167c1",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAIlKz1Xx0y/i8Rg3C4IKEeSa8Ai8Jq2rpV1Y2K/0RZ8E=\n-----END PUBLIC KEY-----\n",
@@ -1310,10 +1254,6 @@
         "pk" : "c0a773110f975de3732355bb7ec7f0c41c091c0252966070205516693b992a4a",
         "sk" : "3d658956410377d0644676d2599542412a4f3b0e4eadfb7f3f836615f42b18bc",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b6570032100c0a773110f975de3732355bb7ec7f0c41c091c0252966070205516693b992a4a",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAwKdzEQ+XXeNzI1W7fsfwxBwJHAJSlmBwIFUWaTuZKko=\n-----END PUBLIC KEY-----\n",
@@ -1347,10 +1287,6 @@
         "pk" : "54cda623245759ad6d43e620a606908befc633d60792bc7798447a0ef38e7311",
         "sk" : "bccb61323840c2a96fc36f7e54ea6c8e55f9d221f7f05791ed60025e06064439",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b657003210054cda623245759ad6d43e620a606908befc633d60792bc7798447a0ef38e7311",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAVM2mIyRXWa1tQ+YgpgaQi+/GM9YHkrx3mER6DvOOcxE=\n-----END PUBLIC KEY-----\n",
@@ -1384,10 +1320,6 @@
         "pk" : "2362bac514d5fad33802642e979a1e82de6eb6f1bcbf6a5b304f2bb02b9e57fe",
         "sk" : "f2d3023b9c19e241748bc4039a7a43c595701f23675505015213a8a2a0274c1b",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b65700321002362bac514d5fad33802642e979a1e82de6eb6f1bcbf6a5b304f2bb02b9e57fe",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAI2K6xRTV+tM4AmQul5oegt5utvG8v2pbME8rsCueV/4=\n-----END PUBLIC KEY-----\n",
@@ -1421,10 +1353,6 @@
         "pk" : "037b55b427dc8daa0f80fcebaf0846902309f8a6cf18b465c0ce9b6539629ac8",
         "sk" : "12fc31c40d5a7af71e05424623ba970b670cf6ecb44cda6120210e6370245ddb",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b6570032100037b55b427dc8daa0f80fcebaf0846902309f8a6cf18b465c0ce9b6539629ac8",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAA3tVtCfcjaoPgPzrrwhGkCMJ+KbPGLRlwM6bZTlimsg=\n-----END PUBLIC KEY-----\n",
@@ -1458,10 +1386,6 @@
         "pk" : "9c0007698f177998a7666c7cf7973e2b88e9c4946e33804a7bbe8968d2394b2e",
         "sk" : "e54bcc4ce95db48072c7b49575617dd1f9403b072105259ca06d8d01530d07fb",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b65700321009c0007698f177998a7666c7cf7973e2b88e9c4946e33804a7bbe8968d2394b2e",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAnAAHaY8XeZinZmx895c+K4jpxJRuM4BKe76JaNI5Sy4=\n-----END PUBLIC KEY-----\n",
@@ -1495,10 +1419,6 @@
         "pk" : "ed3a6f9721dc9729c1f76635bcf080d7036e1c2f0228654ccbbe1e738c17b963",
         "sk" : "de7f2bb12b875a79ccb057344b2867a2edb25dbc1ecfc8cb07c69e2dd3df3e02",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b6570032100ed3a6f9721dc9729c1f76635bcf080d7036e1c2f0228654ccbbe1e738c17b963",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA7TpvlyHclynB92Y1vPCA1wNuHC8CKGVMy74ec4wXuWM=\n-----END PUBLIC KEY-----\n",
@@ -1532,10 +1452,6 @@
         "pk" : "4abfb535313705a6570018440cdec1a3ae33e51f352112fa6acbd0c6bc3ea859",
         "sk" : "ea792b7a9d420bf74f6a82a78e58a2cc94f3ab3eb931270611b1f8da75c3d60b",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b65700321004abfb535313705a6570018440cdec1a3ae33e51f352112fa6acbd0c6bc3ea859",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEASr+1NTE3BaZXABhEDN7Bo64z5R81IRL6asvQxrw+qFk=\n-----END PUBLIC KEY-----\n",
@@ -1569,10 +1485,6 @@
         "pk" : "4f2162e6bf03a712db0efa418b7e7006e23871d9d7ec555a313885c4afd96385",
         "sk" : "eca28645f63646575ee2e4bdb36f51838142ce2474664c2b66ef054b37af6124",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b65700321004f2162e6bf03a712db0efa418b7e7006e23871d9d7ec555a313885c4afd96385",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEATyFi5r8DpxLbDvpBi35wBuI4cdnX7FVaMTiFxK/ZY4U=\n-----END PUBLIC KEY-----\n",
@@ -1606,10 +1518,6 @@
         "pk" : "0717d75ce27ea181ed5a30e6456c649b5cf453a6b4c12cd3f9fd16b31e0c25cd",
         "sk" : "728238602b7e6753b3f49eb0fc4cde38c7bb14ab58ddcaef2537275b13e99dd3",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b65700321000717d75ce27ea181ed5a30e6456c649b5cf453a6b4c12cd3f9fd16b31e0c25cd",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEABxfXXOJ+oYHtWjDmRWxkm1z0U6a0wSzT+f0Wsx4MJc0=\n-----END PUBLIC KEY-----\n",
@@ -1643,10 +1551,6 @@
         "pk" : "db5b9eab7e84e5a13505865fa711c9c896c898609fc11fc9bc1e55028f9496df",
         "sk" : "dc4092d7809c6b070f2808c434267b6697428f4ab1e4626ab56a3059643be43c",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b6570032100db5b9eab7e84e5a13505865fa711c9c896c898609fc11fc9bc1e55028f9496df",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA21ueq36E5aE1BYZfpxHJyJbImGCfwR/JvB5VAo+Ult8=\n-----END PUBLIC KEY-----\n",
@@ -1680,10 +1584,6 @@
         "pk" : "7bac18f6d2625d3915f233434cda38a577247a7332a5170b37142a34644145e0",
         "sk" : "38765b89ec56836ea4190fc957802b6a47167f9b5ef942e92652803b7de6abfd",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b65700321007bac18f6d2625d3915f233434cda38a577247a7332a5170b37142a34644145e0",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAe6wY9tJiXTkV8jNDTNo4pXckenMypRcLNxQqNGRBReA=\n-----END PUBLIC KEY-----\n",
@@ -1717,10 +1617,6 @@
         "pk" : "38ead304624abebf3e2b31e20e5629531e3fc659008887c9106f5e55adbbc62a",
         "sk" : "97575308a490af0c145411dd16d519a073ef03c2e4a0a1cd6b5de2e881e5eabe",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b657003210038ead304624abebf3e2b31e20e5629531e3fc659008887c9106f5e55adbbc62a",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAOOrTBGJKvr8+KzHiDlYpUx4/xlkAiIfJEG9eVa27xio=\n-----END PUBLIC KEY-----\n",
@@ -1754,10 +1650,6 @@
         "pk" : "e9bc95049af7e4817b17c402269ba5e767b7348757ac8002fec9e08390c0a9cf",
         "sk" : "ad129e89e0eec908df51adc227c8c4908a8095d75621536c8a28dca4b3c30dbb",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b6570032100e9bc95049af7e4817b17c402269ba5e767b7348757ac8002fec9e08390c0a9cf",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA6byVBJr35IF7F8QCJpul52e3NIdXrIAC/sngg5DAqc8=\n-----END PUBLIC KEY-----\n",
@@ -1791,10 +1683,6 @@
         "pk" : "ee8155ca4e8fe7bc5bca5992044eab7f8c3c6a13db1176f42f46c29da5b064f4",
         "sk" : "03ce643d6d341b7065bc9e70da8193451cf83ca7ff5a8640fd07af094640365a",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b6570032100ee8155ca4e8fe7bc5bca5992044eab7f8c3c6a13db1176f42f46c29da5b064f4",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA7oFVyk6P57xbylmSBE6rf4w8ahPbEXb0L0bCnaWwZPQ=\n-----END PUBLIC KEY-----\n",
@@ -1828,10 +1716,6 @@
         "pk" : "db507bfcc9576393f7157bb360532b05c5fcf2e764b690cc6698a4a30d349095",
         "sk" : "581f593a5cd94594dc0f5dd142026a436a930e573391b7aeea6a8253eeef6ceb",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b6570032100db507bfcc9576393f7157bb360532b05c5fcf2e764b690cc6698a4a30d349095",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA21B7/MlXY5P3FXuzYFMrBcX88udktpDMZpikow00kJU=\n-----END PUBLIC KEY-----\n",
@@ -1865,10 +1749,6 @@
         "pk" : "994eaf03309d6ad9d95a656bc1744e2886f029023a3750b34f35086b3c7227f8",
         "sk" : "6f207dc94b844d4dc71f982da8d9f3ae0b37b4623e441eca75ba62621c524d98",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b6570032100994eaf03309d6ad9d95a656bc1744e2886f029023a3750b34f35086b3c7227f8",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAmU6vAzCdatnZWmVrwXROKIbwKQI6N1CzTzUIazxyJ/g=\n-----END PUBLIC KEY-----\n",
@@ -1902,10 +1782,6 @@
         "pk" : "127d37e406e0d83e4b55a09e21e8f50fb88af47e4a43f018cdebffc1948757f0",
         "sk" : "dea9bbb9fb20512fa67eea696afd786f3928265f5208aeaba638f3177d0db70e",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b6570032100127d37e406e0d83e4b55a09e21e8f50fb88af47e4a43f018cdebffc1948757f0",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAEn035Abg2D5LVaCeIej1D7iK9H5KQ/AYzev/wZSHV/A=\n-----END PUBLIC KEY-----\n",
@@ -1939,10 +1815,6 @@
         "pk" : "d83ba84edfb4bec49f29be31d80a64b7c0b5a502438cdb1d0dd1e0e3e55786de",
         "sk" : "c99c52ae1e61f7c79a164ee4910fdcaa02946259ea5443f68b23d721d0472f63",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b6570032100d83ba84edfb4bec49f29be31d80a64b7c0b5a502438cdb1d0dd1e0e3e55786de",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA2DuoTt+0vsSfKb4x2Apkt8C1pQJDjNsdDdHg4+VXht4=\n-----END PUBLIC KEY-----\n",
@@ -1976,10 +1848,6 @@
         "pk" : "d3c9aa2f3d6ef217a166e8ae403ed436c37facbbe3beceb78df6eb439f8fa04a",
         "sk" : "d8aaad0749db159569a68b46048b3d3e8266e110150251c42806f0752a84e95b",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b6570032100d3c9aa2f3d6ef217a166e8ae403ed436c37facbbe3beceb78df6eb439f8fa04a",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA08mqLz1u8hehZuiuQD7UNsN/rLvjvs63jfbrQ5+PoEo=\n-----END PUBLIC KEY-----\n",
@@ -2013,10 +1881,6 @@
         "pk" : "d53280367c1c0b95ac4112218b92c6a71c51fb6312ce668de196c7d52a136155",
         "sk" : "e78d26ab5b726c9d4dfb1f634082abded90432a2fd18089c7c85253a5d2fc7d0",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b6570032100d53280367c1c0b95ac4112218b92c6a71c51fb6312ce668de196c7d52a136155",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA1TKANnwcC5WsQRIhi5LGpxxR+2MSzmaN4ZbH1SoTYVU=\n-----END PUBLIC KEY-----\n",
@@ -2050,10 +1914,6 @@
         "pk" : "94ac2336ba97a476fb4c9f2b5563e4167ca292c6e99e422350a911ae3172c315",
         "sk" : "8e7ca56e07f1438ac3615fd9ec77ae63679d0ec059b4595febf40be59d976a05",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b657003210094ac2336ba97a476fb4c9f2b5563e4167ca292c6e99e422350a911ae3172c315",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAlKwjNrqXpHb7TJ8rVWPkFnyiksbpnkIjUKkRrjFywxU=\n-----END PUBLIC KEY-----\n",
@@ -2087,10 +1947,6 @@
         "pk" : "e1e7316d231f7f275bdf403360304da1509fdf1af1fd25ca214eaac0a289398f",
         "sk" : "e77525af5856ab9df5abb64e5312576b498cc27f61f266e21f382e0526d4e6fb",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b6570032100e1e7316d231f7f275bdf403360304da1509fdf1af1fd25ca214eaac0a289398f",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA4ecxbSMffydb30AzYDBNoVCf3xrx/SXKIU6qwKKJOY8=\n-----END PUBLIC KEY-----\n",
@@ -2124,10 +1980,6 @@
         "pk" : "fffbeea71215efaf9888fec2cc68edb3703ff11a66fd629b53cbda5eabc18750",
         "sk" : "1f43235ad716f1beb754ab0f546dfa934488fdf7472b493d7cc3c60353005d24",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b6570032100fffbeea71215efaf9888fec2cc68edb3703ff11a66fd629b53cbda5eabc18750",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA//vupxIV76+YiP7CzGjts3A/8Rpm/WKbU8vaXqvBh1A=\n-----END PUBLIC KEY-----\n",
@@ -2161,10 +2013,6 @@
         "pk" : "19ccc0527599cb032e0b4c4d74e60f13901768a99df041c3bc1bf6c0ef271169",
         "sk" : "3977785b9f8c5320e51a3a16f8cc22c4f7e64857617f9550147fa35d685ca34f",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b657003210019ccc0527599cb032e0b4c4d74e60f13901768a99df041c3bc1bf6c0ef271169",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAGczAUnWZywMuC0xNdOYPE5AXaKmd8EHDvBv2wO8nEWk=\n-----END PUBLIC KEY-----\n",
@@ -2198,10 +2046,6 @@
         "pk" : "0e726e27047563aa0a1a9c2e085d8d26af2acba129d0869c65031e3e6cac329a",
         "sk" : "1aa4415c5db0131bec6fa188d0c23d49a65bf795657153fae94777e3f19bcf54",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b65700321000e726e27047563aa0a1a9c2e085d8d26af2acba129d0869c65031e3e6cac329a",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEADnJuJwR1Y6oKGpwuCF2NJq8qy6Ep0IacZQMePmysMpo=\n-----END PUBLIC KEY-----\n",
@@ -2235,10 +2079,6 @@
         "pk" : "e77717b54a2b5e5bce5bccb8f0c5fdb5fd7df77ac254020fc9120dc0d4df4178",
         "sk" : "0fb7680a50d3f2940077ea4dfcb7eb040a125c4f4b5dcefa16d3af968fc8e5de",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b6570032100e77717b54a2b5e5bce5bccb8f0c5fdb5fd7df77ac254020fc9120dc0d4df4178",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA53cXtUorXlvOW8y48MX9tf1993rCVAIPyRINwNTfQXg=\n-----END PUBLIC KEY-----\n",
@@ -2272,10 +2112,6 @@
         "pk" : "6220972d3f7d150b36790d7d522384876d64d640cd9913186815e1629582ed36",
         "sk" : "e222c444d6bc8a4796a0d5a2d71d19b98845cc56e39caaf8233ea4c6b0704f09",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b65700321006220972d3f7d150b36790d7d522384876d64d640cd9913186815e1629582ed36",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAYiCXLT99FQs2eQ19UiOEh21k1kDNmRMYaBXhYpWC7TY=\n-----END PUBLIC KEY-----\n",
@@ -2309,10 +2145,6 @@
         "pk" : "7b64a28c50ec7678a90e3e1a21522e30ac9db7b5215aea2bfb33bea037eab987",
         "sk" : "a89ea18476b9ad90cb14b8b1ff24777e4ebd015bc810a60785a9154dacf3be52",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b65700321007b64a28c50ec7678a90e3e1a21522e30ac9db7b5215aea2bfb33bea037eab987",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAe2SijFDsdnipDj4aIVIuMKydt7UhWuor+zO+oDfquYc=\n-----END PUBLIC KEY-----\n",
@@ -2346,10 +2178,6 @@
         "pk" : "724452210a9e4c994819229bf12bf84e95768a3a97c08d8d8f5f939a4cad34c5",
         "sk" : "69b1da56cde8d1676c2a8c0e7f95c7d0bf60739efd1304dd2ccb02729d17a22c",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b6570032100724452210a9e4c994819229bf12bf84e95768a3a97c08d8d8f5f939a4cad34c5",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAckRSIQqeTJlIGSKb8Sv4TpV2ijqXwI2Nj1+TmkytNMU=\n-----END PUBLIC KEY-----\n",
@@ -2383,10 +2211,6 @@
         "pk" : "bad265b294ed2f422cb6a141694086238fbfe987571aa765d8b4f3a24105aa01",
         "sk" : "b332265cf95595f0c90221593b5a2b3c574d60dc634ddff6186f0eed7980a383",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b6570032100bad265b294ed2f422cb6a141694086238fbfe987571aa765d8b4f3a24105aa01",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAutJlspTtL0IstqFBaUCGI4+/6YdXGqdl2LTzokEFqgE=\n-----END PUBLIC KEY-----\n",
@@ -2420,10 +2244,6 @@
         "pk" : "0aaee4b723db9b51ba7d22eb23eb8a76a5ac02f4fc9dd06f77bea42e1d37ec5a",
         "sk" : "faec9764b369df0ef10890dd022c502e551a3222b43e8429455496c76feea45d",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b65700321000aaee4b723db9b51ba7d22eb23eb8a76a5ac02f4fc9dd06f77bea42e1d37ec5a",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEACq7ktyPbm1G6fSLrI+uKdqWsAvT8ndBvd76kLh037Fo=\n-----END PUBLIC KEY-----\n",
@@ -2457,10 +2277,6 @@
         "pk" : "812344af15a91ba83c2c91e96f1727ac0f3c4c41385b9fa84efa399ada5168be",
         "sk" : "4eb19e278f7a30a06a7d55e42c44775f4a81b7a45c0512aae026262e71770dac",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b6570032100812344af15a91ba83c2c91e96f1727ac0f3c4c41385b9fa84efa399ada5168be",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAgSNErxWpG6g8LJHpbxcnrA88TEE4W5+oTvo5mtpRaL4=\n-----END PUBLIC KEY-----\n",
@@ -2494,10 +2310,6 @@
         "pk" : "0ee5cb5597fbdf8dccc48b01485e39b33aa133b52d30d23740277267cfec3e3e",
         "sk" : "1998d5949cab365a00f828e7d17b06c708d33fef0031d353a4e15bf7222a73b0",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b65700321000ee5cb5597fbdf8dccc48b01485e39b33aa133b52d30d23740277267cfec3e3e",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEADuXLVZf7343MxIsBSF45szqhM7UtMNI3QCdyZ8/sPj4=\n-----END PUBLIC KEY-----\n",
@@ -2531,10 +2343,6 @@
         "pk" : "9fba1de92b60b5b4703089763d0d6f9125e4dd7efae41f08a22882aef96892c4",
         "sk" : "6164676114c66bd9887dac341c66209dc587ccf0cc5cd9baffdfac9295a00c4a",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b65700321009fba1de92b60b5b4703089763d0d6f9125e4dd7efae41f08a22882aef96892c4",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAn7od6StgtbRwMIl2PQ1vkSXk3X765B8IoiiCrvloksQ=\n-----END PUBLIC KEY-----\n",
@@ -2568,10 +2376,6 @@
         "pk" : "7582ab1b52e1316e5c13671f43b39ca36b28133cd0832831bcddd0b0f23398cb",
         "sk" : "4b0bd03a03b20069ccbcc214a7448473f4e7a491fa7ceb48ddbe24c83c4aa4bb",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b65700321007582ab1b52e1316e5c13671f43b39ca36b28133cd0832831bcddd0b0f23398cb",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAdYKrG1LhMW5cE2cfQ7Oco2soEzzQgygxvN3QsPIzmMs=\n-----END PUBLIC KEY-----\n",
@@ -2605,10 +2409,6 @@
         "pk" : "dd2d678bae222f3fb6e8278f08cc9e1a66339c926c29ac0a16f9717f5ee18cd8",
         "sk" : "2fce7870be1f392d21fb1d2350ec7877db8aa99b359fe5bdd5338ff35a791d1c",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b6570032100dd2d678bae222f3fb6e8278f08cc9e1a66339c926c29ac0a16f9717f5ee18cd8",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA3S1ni64iLz+26CePCMyeGmYznJJsKawKFvlxf17hjNg=\n-----END PUBLIC KEY-----\n",
@@ -2642,10 +2442,6 @@
         "pk" : "ccbe7cb2e4bc215cee2f885e1d22f7e0d582b2bbbd782c104e548b152d26fc69",
         "sk" : "a9ace42195ddbb3a16f366b24dd9d37a8a043ed2e6001f54652296750379367d",
         "type" : "EDDSAKeyPair"
-        "source" : {
-          "name" : "google-wycheproof",
-          "version" : "0.8rc16"
-        }
       },
       "keyDer" : "302a300506032b6570032100ccbe7cb2e4bc215cee2f885e1d22f7e0d582b2bbbd782c104e548b152d26fc69",
       "keyPem" : "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAzL58suS8IVzuL4heHSL34NWCsru9eCwQTlSLFS0m/Gk=\n-----END PUBLIC KEY-----\n",
