@@ -63,17 +63,19 @@ including
 - AES-EAX
 - AES-GCM
 - ChaCha20-Poly1305
-- [DH](doc/dh.md)
+- DH
 - DHIES
-- [DSA](doc/dsa.md)
-- [ECDH](doc/ecdh.md)
+- DSA
+- ECDH
 - ECDSA
 - EdDSA
 - ECIES
 - HKDF
 - HMAC
-- [RSA](doc/rsa.md)
+- RSA
 - X25519, X448
+- ML-KEM (Kyber)
+- ML-DSA (CRYSTALS-Dilithium)
 
 The test vectors detect whether a library is vulnerable to many attacks,
 including
