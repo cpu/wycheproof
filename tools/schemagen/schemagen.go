@@ -17,7 +17,11 @@ import (
 	"github.com/atombender/go-jsonschema/pkg/generator"
 )
 
-var schemaDirectory = flag.String("schemas-dir", "schemas", "directory containing schema files")
+var (
+	schemaDirectory = flag.String("schemas-dir", "schemas", "directory containing schema files")
+	outputPath      = flag.String("output", "", "if set, write the generated Go source to this path (in addition to running the smoke-test). The exit status still reflects the warning count so CI remains gated on a clean run.")
+	packageName     = flag.String("package", "wycheproof", "Go package name for the generated source")
+)
 
 func main() {
 	flag.Parse()
@@ -26,7 +30,7 @@ func main() {
 
 	ouputName := "schema.go"
 	cfg := generator.Config{
-		DefaultPackageName: "wycheproof",
+		DefaultPackageName: *packageName,
 		DefaultOutputName:  ouputName,
 		Tags:               []string{"json"},
 		Warner: func(message string) {
@@ -61,9 +65,16 @@ func main() {
 	if sourceCount := len(sources); sourceCount != 1 {
 		log.Fatalf("expected to generate 1 source file, got %d\n", sourceCount)
 	}
-	_, ok := sources[ouputName]
+	src, ok := sources[ouputName]
 	if !ok {
 		log.Fatalf("missing generated %q output file source", ouputName)
+	}
+
+	if *outputPath != "" {
+		if err := os.WriteFile(*outputPath, src, 0o644); err != nil {
+			log.Fatalf("writing generated source to %q: %v", *outputPath, err)
+		}
+		log.Printf("wrote generated schema source to %q (%d bytes)", *outputPath, len(src))
 	}
 
 	for _, warning := range warnings {
