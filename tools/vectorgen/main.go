@@ -6,6 +6,7 @@
 //
 //	fmt  [--check] <glob>...   Format vector files (or check formatting).
 //	lint [flags]               Validate vector files against their schemas.
+//	add  [flags]               Append a group, or append into an existing group.
 package main
 
 import (
@@ -25,6 +26,8 @@ func main() {
 		os.Exit(runFmt(args))
 	case "lint":
 		os.Exit(runLint(args))
+	case "add":
+		os.Exit(runAdd(args))
 	case "-h", "--help", "help":
 		usage(os.Stdout)
 		os.Exit(0)
@@ -41,12 +44,15 @@ func usage(w *os.File) {
 Usage:
   vectorgen fmt  [--check] <glob>...
   vectorgen lint [flags]
+  vectorgen add  --vectors <file> --input <envelope>|- [flags]
 
 Subcommands:
   fmt    Normalize formatting of vector JSON files in place.
          With --check, exit non-zero if any file would be modified.
   lint   Validate vector files against their declared schemas and
          structural invariants.
+  add    Append a new test group, or new tests into an existing group,
+         per an envelope JSON. Pass --create to allow creating new files.
 
 Glob patterns for fmt are expanded with Go's filepath.Glob (shell-style, no recursion).
 `)

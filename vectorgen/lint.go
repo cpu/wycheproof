@@ -16,6 +16,68 @@ import (
 	"github.com/santhosh-tekuri/jsonschema/v6"
 )
 
+// Lint walks the configured vector directories and validates every *.json
+// vector against its declared schema and against structural invariants
+// (single test-group type per file, unique tcIds, accurate numberOfTests).
+//
+// Returns the per-category counts. Lint itself only returns an error for
+// unrecoverable I/O problems; per-vector validation failures are recorded in
+// the results.
+func Lint(opts LintOptions) (LintResults, error) {
+	if opts.Log == nil {
+		opts.Log = func(string, ...any) {}
+	}
+	if len(opts.VectorDirs) == 0 {
+		opts.VectorDirs = []string{"testvectors_v1"}
+	}
+
+	var results LintResults
+	for _, dir := range opts.VectorDirs {
+		if err := lintDir(opts.SchemasFS, dir, opts.Filter, opts.Log, &results); err != nil {
+			return results, err
+		}
+	}
+
+	return results, nil
+}
+
+func lintDir(schemasFS fs.FS, dir string, filter *regexp.Regexp, logf func(string, ...any), results *LintResults) error {
+	return filepath.WalkDir(dir, func(path string, d fs.DirEntry, err error) error {
+		if err != nil {
+			return err
+		}
+		if d.IsDir() || !strings.HasSuffix(d.Name(), ".json") {
+			return nil
+		}
+		if filter != nil && !filter.MatchString(d.Name()) {
+			return nil
+		}
+
+		results.Total++
+
+		data, err := os.ReadFile(path)
+		if err != nil {
+			return fmt.Errorf("read %s: %w", path, err)
+		}
+
+		switch err := LintBytes(data, schemasFS); {
+		case err == nil:
+			logf("✅ %q: valid", path)
+			results.Valid++
+		case errors.Is(err, ErrNoSchema):
+			logf("❌ %q: %s", path, err)
+			results.NoSchema++
+		case errors.Is(err, ErrIgnoredSchema):
+			logf("⚠️ %q: %s", path, err)
+			results.Ignored++
+		default:
+			logf("❌ %q: %s", path, err)
+			results.Invalid++
+		}
+		return nil
+	})
+}
+
 // LintOptions configures Lint.
 type LintOptions struct {
 	// SchemasFS is the filesystem containing schema files. If nil, the embedded
@@ -44,64 +106,60 @@ type LintResults struct {
 	Ignored  int
 }
 
-// Lint walks the configured vector directories and validates every *.json
-// vector against its declared schema and against structural invariants
-// (single test-group type per file, unique tcIds, accurate numberOfTests).
-//
-// Returns the per-category counts. Lint itself only returns an error for
-// unrecoverable I/O problems; per-vector validation failures are recorded in
-// the results.
-func Lint(opts LintOptions) (LintResults, error) {
-	if opts.Log == nil {
-		opts.Log = func(string, ...any) {}
-	}
-	if len(opts.VectorDirs) == 0 {
-		opts.VectorDirs = []string{"testvectors_v1"}
+// LintBytes validates a single vector file's bytes against its declared
+// schema and against structural invariants. Returns nil if the vector is
+// fully valid, ErrNoSchema or ErrIgnoredSchema for tolerable cases, or a
+// wrapped error describing the validation failure.
+func LintBytes(data []byte, schemasFS fs.FS) error {
+	if err := lintTestGroups(data); err != nil {
+		return err
 	}
 
-	compiler, err := newSchemaCompiler(opts.SchemasFS)
+	var ref struct {
+		Schema string `json:"schema"`
+	}
+	if err := json.Unmarshal(data, &ref); err != nil {
+		return fmt.Errorf("invalid vector JSON: %w", err)
+	}
+	if ref.Schema == "" {
+		return ErrNoSchema
+	}
+	if missingSchemas[ref.Schema] {
+		return fmt.Errorf("%w: %q", ErrIgnoredSchema, ref.Schema)
+	}
+
+	compiler, err := newSchemaCompiler(schemasFS)
 	if err != nil {
-		return LintResults{}, err
+		return fmt.Errorf("building schema compiler: %w", err)
+	}
+	schema, err := compiler.Compile(ref.Schema)
+	if err != nil {
+		return fmt.Errorf("invalid schema %q: %w", ref.Schema, err)
 	}
 
-	var results LintResults
-	for _, dir := range opts.VectorDirs {
-		if err := lintDir(compiler, dir, opts.Filter, opts.Log, &results); err != nil {
-			return results, err
-		}
+	var instance any
+	if err := json.Unmarshal(data, &instance); err != nil {
+		return fmt.Errorf("invalid vector JSON: %w", err)
 	}
-	return results, nil
+	if err := schema.Validate(instance); err != nil {
+		return fmt.Errorf("doesn't validate with schema: %w", err)
+	}
+
+	return nil
 }
 
-func lintDir(compiler *jsonschema.Compiler, dir string, filter *regexp.Regexp, logf func(string, ...any), results *LintResults) error {
-	return filepath.WalkDir(dir, func(path string, d fs.DirEntry, err error) error {
-		if err != nil {
-			return err
-		}
-		if d.IsDir() || !strings.HasSuffix(d.Name(), ".json") {
-			return nil
-		}
-		if filter != nil && !filter.MatchString(d.Name()) {
-			return nil
-		}
+// Sentinel errors LintBytes returns when a vector is structurally valid but
+// could not be fully schema-validated. Callers that categorize results (e.g.
+// vectorgen lint) use errors.Is to distinguish these from real validation
+// failures.
+var (
+	// ErrNoSchema is returned when a vector does not declare a schema.
+	ErrNoSchema = errors.New("no schema specified")
 
-		results.Total++
-
-		data, err := os.ReadFile(path)
-		if err != nil {
-			return fmt.Errorf("read %s: %w", path, err)
-		}
-
-		if err := lintTestGroups(data); err != nil {
-			logf("❌ %q: %s", path, err)
-			results.Invalid++
-			return nil
-		}
-
-		lintAgainstSchema(compiler, data, path, logf, results)
-		return nil
-	})
-}
+	// ErrIgnoredSchema is returned when a vector references a schema in our
+	// missingSchemas allow-list (vectors awaiting a schema port).
+	ErrIgnoredSchema = errors.New("schema is in the missing-schema allow-list")
+)
 
 func lintTestGroups(data []byte) error {
 	var v struct {
@@ -144,49 +202,6 @@ func lintTestGroups(data []byte) error {
 		return fmt.Errorf("declared %d tests, found %d", v.NumberOfTests, len(ids))
 	}
 	return nil
-}
-
-func lintAgainstSchema(compiler *jsonschema.Compiler, data []byte, path string, logf func(string, ...any), results *LintResults) {
-	var v struct {
-		Schema string `json:"schema"`
-	}
-	if err := json.Unmarshal(data, &v); err != nil {
-		logf("❌ %q: invalid vector JSON: %s", path, err)
-		results.Invalid++
-		return
-	}
-	if v.Schema == "" {
-		logf("❌ %q: no schema specified", path)
-		results.NoSchema++
-		return
-	}
-	if missingSchemas[v.Schema] {
-		logf("⚠️ %q: ignoring missing schema %q", path, v.Schema)
-		results.Ignored++
-		return
-	}
-
-	schema, err := compiler.Compile(v.Schema)
-	if err != nil {
-		logf("❌ %q: invalid schema %q: %s", path, v.Schema, err)
-		results.Invalid++
-		return
-	}
-
-	var instance any
-	if err := json.Unmarshal(data, &instance); err != nil {
-		logf("❌ %q: invalid vector JSON: %s", path, err)
-		results.Invalid++
-		return
-	}
-	if err := schema.Validate(instance); err != nil {
-		logf("❌ %q: doesn't validate with schema: %s", path, err)
-		results.Invalid++
-		return
-	}
-
-	logf("✅ %q: validates with %q", path, v.Schema)
-	results.Valid++
 }
 
 func newSchemaCompiler(schemasFS fs.FS) (*jsonschema.Compiler, error) {
