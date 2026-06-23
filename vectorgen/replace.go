@@ -8,23 +8,23 @@ import (
 	"os"
 )
 
-// Replace swaps the single group matching source (and optional version) in
-// the vector file at vectorPath with a fresh group built from env's
-// GroupTemplate and Tests. The new group is inserted at the original group's
-// position. Every test in the file is renumbered sequentially from 1 in file
-// order; numberOfTests is recomputed.
+// Replace swaps the single group matching filter in the vector file at
+// vectorPath with a fresh group built from env's GroupTemplate and Tests.
+// The new group is inserted at the original group's position. Every test in
+// the file is renumbered sequentially from 1 in file order; numberOfTests is
+// recomputed.
 //
 // Errors:
-//   - The source filter matches zero or more than one group.
+//   - The filter matches zero or more than one group.
 //   - The envelope has top-level metadata fields set (Algorithm, Schema,
 //     Header) — those are only meaningful when creating a new file.
 //   - The envelope has IntoGroup set — that's an Add-only mode.
 //
 // On schema-validation failure the candidate output is written to
 // vectorPath+".rej" and the original is left untouched.
-func Replace(vectorPath string, env AddEnvelope, source, version string, opts Options) error {
-	if source == "" {
-		return errors.New("source is required")
+func Replace(vectorPath string, env AddEnvelope, filter SourceFilter, opts Options) error {
+	if filter.Name == "" {
+		return errors.New("filter.Name is required")
 	}
 	if len(env.Tests) == 0 {
 		return errors.New("envelope.tests is empty")
@@ -48,7 +48,7 @@ func Replace(vectorPath string, env AddEnvelope, source, version string, opts Op
 		return fmt.Errorf("parsing %s: %w", vectorPath, err)
 	}
 
-	root, err = replaceGroup(root, source, version, env.GroupTemplate, env.Tests)
+	root, err = replaceGroup(root, filter, env.GroupTemplate, env.Tests)
 	if err != nil {
 		return err
 	}
@@ -73,9 +73,9 @@ func Replace(vectorPath string, env AddEnvelope, source, version string, opts Op
 	return finalizeAndWrite(vectorPath, root, opts)
 }
 
-// replaceGroup finds the single group matching source[@version] and swaps it
-// for a freshly built group (template + tests) at the same position.
-func replaceGroup(root RawObject, source, version string, groupTemplate jsontext.Value, tests []jsontext.Value) (RawObject, error) {
+// replaceGroup finds the single group matching filter and swaps it for a
+// freshly built group (template + tests) at the same position.
+func replaceGroup(root RawObject, filter SourceFilter, groupTemplate jsontext.Value, tests []jsontext.Value) (RawObject, error) {
 	groups, err := getTestGroups(root)
 	if err != nil {
 		return nil, err
@@ -87,7 +87,7 @@ func replaceGroup(root RawObject, source, version string, groupTemplate jsontext
 		if err != nil {
 			return nil, fmt.Errorf("group %d: %w", i, err)
 		}
-		match, err := groupMatchesSource(group, source, version)
+		match, err := filter.Matches(group)
 		if err != nil {
 			return nil, fmt.Errorf("group %d: %w", i, err)
 		}
@@ -96,10 +96,10 @@ func replaceGroup(root RawObject, source, version string, groupTemplate jsontext
 		}
 	}
 	if len(matches) == 0 {
-		return nil, fmt.Errorf("source %q matched no group", sourceLabel(source, version))
+		return nil, fmt.Errorf("source %q matched no group", filter.String())
 	}
 	if len(matches) > 1 {
-		return nil, fmt.Errorf("source %q matched %d groups; disambiguate with name@version", sourceLabel(source, version), len(matches))
+		return nil, fmt.Errorf("source %q matched %d groups; disambiguate with name@version", filter.String(), len(matches))
 	}
 
 	newGroup, err := parseObject(groupTemplate)
@@ -164,12 +164,4 @@ func renumberAllTests(root RawObject) (RawObject, error) {
 	}
 
 	return root.Set("testGroups", mustMarshalArray(groups)), nil
-}
-
-// sourceLabel formats a source filter for error messages.
-func sourceLabel(name, version string) string {
-	if version == "" {
-		return name
-	}
-	return name + "@" + version
 }

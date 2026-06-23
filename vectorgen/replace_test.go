@@ -45,7 +45,8 @@ func TestReplacePreservesGroupPosition(t *testing.T) {
 		Tests:         []jsontext.Value{newTest},
 	}
 	opts := vectorgen.Options{SchemasFS: os.DirFS(dir)}
-	if err := vectorgen.Replace(target, env, "github/lukaszobernig/reenc", "", opts); err != nil {
+	filter := vectorgen.SourceFilter{Name: "github/lukaszobernig/reenc"}
+	if err := vectorgen.Replace(target, env, filter, opts); err != nil {
 		t.Fatalf("Replace: %v", err)
 	}
 
@@ -107,7 +108,7 @@ func TestReplaceRejectsAmbiguousSource(t *testing.T) {
 		Tests:         []jsontext.Value{jsontext.Value(`{"tcId": 1, "value": "x"}`)},
 	}
 	opts := vectorgen.Options{SchemasFS: os.DirFS("testdata/update_rewrite")}
-	err := vectorgen.Replace(target, env, "dup", "", opts)
+	err := vectorgen.Replace(target, env, vectorgen.SourceFilter{Name: "dup"}, opts)
 	if err == nil {
 		t.Fatal("expected error for ambiguous source")
 	}
@@ -136,7 +137,7 @@ func TestReplaceRejectsMetadataFields(t *testing.T) {
 		Tests:         []jsontext.Value{jsontext.Value(`{"comment": "x"}`)},
 	}
 	opts := vectorgen.Options{SchemasFS: os.DirFS(dir)}
-	err = vectorgen.Replace(target, env, "github/lukaszobernig/reenc", "", opts)
+	err = vectorgen.Replace(target, env, vectorgen.SourceFilter{Name: "github/lukaszobernig/reenc"}, opts)
 	if err == nil {
 		t.Fatal("expected error for metadata fields in Replace envelope")
 	}

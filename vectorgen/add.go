@@ -186,7 +186,7 @@ func appendNewGroup(root RawObject, groupTemplate jsontext.Value, tests []jsonte
 //
 // source may be "name" or "name@version".
 func appendIntoGroup(root RawObject, source string, tests []jsontext.Value) (RawObject, error) {
-	wantName, wantVersion := splitSource(source)
+	filter := ParseSourceFilter(source)
 
 	groups, err := getTestGroups(root)
 	if err != nil {
@@ -200,7 +200,7 @@ func appendIntoGroup(root RawObject, source string, tests []jsontext.Value) (Raw
 			return nil, fmt.Errorf("group %d: parsing: %w", i, err)
 		}
 
-		match, err := groupMatchesSource(group, wantName, wantVersion)
+		match, err := filter.Matches(group)
 		if err != nil {
 			return nil, fmt.Errorf("group %d: %w", i, err)
 		}

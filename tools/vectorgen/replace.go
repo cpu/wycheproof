@@ -5,7 +5,6 @@ import (
 	"flag"
 	"fmt"
 	"os"
-	"strings"
 
 	"github.com/c2sp/wycheproof/vectorgen"
 )
@@ -38,8 +37,6 @@ Flags:
 		return 2
 	}
 
-	name, version := splitAtVersion(*source)
-
 	envBytes, err := readEnvelope(*input)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "vectorgen replace: %v\n", err)
@@ -56,20 +53,11 @@ Flags:
 		opts.SchemasFS = os.DirFS(*schemasDir)
 	}
 
-	if err := vectorgen.Replace(*vectorPath, env, name, version, opts); err != nil {
+	if err := vectorgen.Replace(*vectorPath, env, vectorgen.ParseSourceFilter(*source), opts); err != nil {
 		fmt.Fprintf(os.Stderr, "vectorgen replace: %v\n", err)
 		return 1
 	}
 	fmt.Fprintf(os.Stderr, "vectorgen replace: wrote %s\n", *vectorPath)
 
 	return 0
-}
-
-// splitAtVersion splits "name@version" into its parts. Returns the input
-// unchanged plus an empty version if no @ is present.
-func splitAtVersion(s string) (name, version string) {
-	if i := strings.Index(s, "@"); i >= 0 {
-		return s[:i], s[i+1:]
-	}
-	return s, ""
 }

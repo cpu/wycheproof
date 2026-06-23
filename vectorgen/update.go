@@ -80,7 +80,7 @@ type UpdateEnvelope struct {
 //
 // Per-test merge uses propOrder to position newly added keys.
 func applyPatches(root RawObject, env UpdateEnvelope, propOrder []string) (RawObject, error) {
-	wantName, wantVersion := splitSource(env.Source)
+	filter := ParseSourceFilter(env.Source)
 
 	patchByTcId, err := indexPatches(env.Patches)
 	if err != nil {
@@ -100,7 +100,7 @@ func applyPatches(root RawObject, env UpdateEnvelope, propOrder []string) (RawOb
 			return nil, fmt.Errorf("group %d: %w", gi, err)
 		}
 
-		match, err := groupMatchesSource(group, wantName, wantVersion)
+		match, err := filter.Matches(group)
 		if err != nil {
 			return nil, fmt.Errorf("group %d: %w", gi, err)
 		}

@@ -20,17 +20,32 @@ type Options struct {
 	SchemasFS fs.FS
 }
 
-// splitSource splits "name@version" or returns "name", "".
-func splitSource(s string) (name, version string) {
-	if i := strings.Index(s, "@"); i >= 0 {
-		return s[:i], s[i+1:]
-	}
-	return s, ""
+// SourceFilter selects test groups by source.name and, optionally,
+// source.version. An empty Version matches any version. Used by Add (for
+// --into-group), Update (for the patch source), and Replace.
+type SourceFilter struct {
+	Name    string
+	Version string
 }
 
-// groupMatchesSource reports whether group has source.name == wantName and
-// (if wantVersion is non-empty) source.version == wantVersion.
-func groupMatchesSource(group RawObject, wantName, wantVersion string) (bool, error) {
+// ParseSourceFilter parses "name" or "name@version".
+func ParseSourceFilter(s string) SourceFilter {
+	if name, version, ok := strings.Cut(s, "@"); ok {
+		return SourceFilter{Name: name, Version: version}
+	}
+	return SourceFilter{Name: s}
+}
+
+// String formats the filter as "name" or "name@version".
+func (f SourceFilter) String() string {
+	if f.Version == "" {
+		return f.Name
+	}
+	return f.Name + "@" + f.Version
+}
+
+// Matches reports whether group's source field matches f.
+func (f SourceFilter) Matches(group RawObject) (bool, error) {
 	rawSrc, ok := group.Get("source")
 	if !ok {
 		return false, nil
@@ -44,15 +59,14 @@ func groupMatchesSource(group RawObject, wantName, wantVersion string) (bool, er
 	if !ok {
 		return false, nil
 	}
-
 	var name string
 	if err := json.Unmarshal(nameVal, &name); err != nil {
 		return false, fmt.Errorf("decoding source.name: %w", err)
 	}
-	if name != wantName {
+	if name != f.Name {
 		return false, nil
 	}
-	if wantVersion == "" {
+	if f.Version == "" {
 		return true, nil
 	}
 
@@ -64,8 +78,7 @@ func groupMatchesSource(group RawObject, wantName, wantVersion string) (bool, er
 	if err := json.Unmarshal(verVal, &version); err != nil {
 		return false, fmt.Errorf("decoding source.version: %w", err)
 	}
-
-	return version == wantVersion, nil
+	return version == f.Version, nil
 }
 
 // getTestGroups extracts the testGroups array as a slice of raw JSON values
