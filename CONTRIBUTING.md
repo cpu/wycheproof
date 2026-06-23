@@ -21,7 +21,8 @@ test vector data structure. See the [`schemas/` directory][schema dir] for
 existing examples.
 
 Test vector files are [linted in CI][schema lint] against their schemas. You can
-run the lint locally after installing Go with `go run ./tools/vectorlint`.
+run the lint locally after installing Go with
+`GOEXPERIMENT=jsonv2 go run ./tools/vectorgen lint`.
 
 #### Schema best practices
 

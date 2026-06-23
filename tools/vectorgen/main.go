@@ -4,7 +4,8 @@
 //
 // Subcommands:
 //
-//	fmt [--check] <glob>...   Format vector files (or check formatting).
+//	fmt  [--check] <glob>...   Format vector files (or check formatting).
+//	lint [flags]               Validate vector files against their schemas.
 package main
 
 import (
@@ -17,11 +18,13 @@ func main() {
 		usage(os.Stderr)
 		os.Exit(2)
 	}
-	
+
 	cmd, args := os.Args[1], os.Args[2:]
 	switch cmd {
 	case "fmt":
 		os.Exit(runFmt(args))
+	case "lint":
+		os.Exit(runLint(args))
 	case "-h", "--help", "help":
 		usage(os.Stdout)
 		os.Exit(0)
@@ -36,12 +39,15 @@ func usage(w *os.File) {
 	fmt.Fprint(w, `vectorgen — Wycheproof test vector tooling
 
 Usage:
-  vectorgen fmt [--check] <glob>...
+  vectorgen fmt  [--check] <glob>...
+  vectorgen lint [flags]
 
 Subcommands:
   fmt    Normalize formatting of vector JSON files in place.
          With --check, exit non-zero if any file would be modified.
+  lint   Validate vector files against their declared schemas and
+         structural invariants.
 
-Glob patterns are expanded with Go's filepath.Glob (shell-style, no recursion).
+Glob patterns for fmt are expanded with Go's filepath.Glob (shell-style, no recursion).
 `)
 }

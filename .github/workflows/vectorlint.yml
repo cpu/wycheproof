@@ -80,8 +80,10 @@ jobs:
           GOEXPERIMENT: jsonv2
         run: go run ./tools/vectorgen fmt --check 'testvectors_v1/*.json'
 
-      - name: Run vectorlint
-        run: go run ./tools/vectorlint
+      - name: Run vectorgen lint
+        env:
+          GOEXPERIMENT: jsonv2
+        run: go run ./tools/vectorgen lint
 
       - name: Run twistcheck
         run: go run ./tools/twistcheck
