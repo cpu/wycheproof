@@ -76,7 +76,9 @@ jobs:
           go-version-file: go.mod
 
       - name: Verify JSON formatting
-        run: ./tools/reformat_json.py && git diff --exit-code
+        env:
+          GOEXPERIMENT: jsonv2
+        run: go run ./tools/vectorgen fmt --check 'testvectors_v1/*.json'
 
       - name: Run vectorlint
         run: go run ./tools/vectorlint
