@@ -106,7 +106,7 @@ func addNewFile(vectorPath string, env AddEnvelope, opts Options) error {
 		return errors.New("creating a new file requires envelope.groupTemplate")
 	}
 
-	schemaOrder, err := topLevelRequiredOrder(opts.SchemasFS, env.Schema)
+	schemaOrder, err := topLevelProperties(opts.SchemasFS, env.Schema)
 	if err != nil {
 		return fmt.Errorf("reading schema %s: %w", env.Schema, err)
 	}

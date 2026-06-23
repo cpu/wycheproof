@@ -4,13 +4,15 @@
 //
 // Subcommands:
 //
-//	fmt  [--check] <glob>...   Format vector files (or check formatting).
-//	lint [flags]               Validate vector files against their schemas.
-//	add  [flags]               Append a group, or append into an existing group.
+//	fmt    [--check] <glob>...   Format vector files (or check formatting).
+//	lint   [flags]               Validate vector files against their schemas.
+//	add    [flags]               Append a group, or append into an existing group.
+//	update [flags]               Patch existing tests in place.
 package main
 
 import (
 	"fmt"
+	"io"
 	"os"
 )
 
@@ -28,6 +30,8 @@ func main() {
 		os.Exit(runLint(args))
 	case "add":
 		os.Exit(runAdd(args))
+	case "update":
+		os.Exit(runUpdate(args))
 	case "-h", "--help", "help":
 		usage(os.Stdout)
 		os.Exit(0)
@@ -42,18 +46,30 @@ func usage(w *os.File) {
 	fmt.Fprint(w, `vectorgen — Wycheproof test vector tooling
 
 Usage:
-  vectorgen fmt  [--check] <glob>...
-  vectorgen lint [flags]
-  vectorgen add  --vectors <file> --input <envelope>|- [flags]
+  vectorgen fmt    [--check] <glob>...
+  vectorgen lint   [flags]
+  vectorgen add    --vectors <file> --input <envelope>|- [flags]
+  vectorgen update --vectors <glob> --input <envelope>|- [flags]
 
 Subcommands:
-  fmt    Normalize formatting of vector JSON files in place.
-         With --check, exit non-zero if any file would be modified.
-  lint   Validate vector files against their declared schemas and
-         structural invariants.
-  add    Append a new test group, or new tests into an existing group,
-         per an envelope JSON. Pass --create to allow creating new files.
+  fmt     Normalize formatting of vector JSON files in place.
+          With --check, exit non-zero if any file would be modified.
+  lint    Validate vector files against their declared schemas and
+          structural invariants.
+  add     Append a new test group, or new tests into an existing group,
+          per an envelope JSON. Pass --create to allow creating new files.
+  update  Patch existing tests in place across one or more files, matching
+          tests by tcId within source-filtered groups.
 
-Glob patterns for fmt are expanded with Go's filepath.Glob (shell-style, no recursion).
+Glob patterns for fmt and update are expanded with Go's filepath.Glob
+(shell-style, no recursion).
 `)
+}
+
+// readEnvelope reads an envelope JSON from path, or from stdin if path is "-".
+func readEnvelope(path string) ([]byte, error) {
+	if path == "-" {
+		return io.ReadAll(os.Stdin)
+	}
+	return os.ReadFile(path)
 }

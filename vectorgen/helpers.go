@@ -10,8 +10,6 @@ import (
 	"maps"
 	"slices"
 	"strings"
-
-	"github.com/c2sp/wycheproof"
 )
 
 // Options configures vectorgen mutating operations.
@@ -168,36 +166,7 @@ func mustMarshalArray(vals []jsontext.Value) jsontext.Value {
 // emptyObject returns a JSON empty object value.
 func emptyObject() jsontext.Value { return jsontext.Value("{}") }
 
-// topLevelRequiredOrder returns the ordering of top-level required properties
-// from the named schema.
-//
-// If the schema doesn't declare a top-level required array, returns a sensible
-//
-//	default order.
-func topLevelRequiredOrder(schemasFS fs.FS, schemaName string) ([]string, error) {
-	if schemasFS == nil {
-		schemasFS = wycheproof.Schemas
-	}
-	data, err := fs.ReadFile(schemasFS, schemaName)
-	if err != nil {
-		panic(fmt.Sprintf("missing schema: %q", schemaName))
-	}
-
-	var doc struct {
-		Required []string `json:"required"`
-	}
-	if err := json.Unmarshal(data, &doc); err != nil {
-		return nil, fmt.Errorf("parsing schema: %w", err)
-	}
-
-	if len(doc.Required) == 0 {
-		return []string{"algorithm", "schema", "numberOfTests", "notes", "testGroups"}, nil
-	}
-
-	return doc.Required, nil
-}
-
-// assembleTopLevel builds the root object in schema-required order.
+// assembleTopLevel builds the root object in schema-properties order.
 //
 // Keys present in values are inserted in the order listed in order. Any value
 // keys not in order are appended at the end (alphabetically for determinism).

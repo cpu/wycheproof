@@ -5,7 +5,6 @@ import (
 	"errors"
 	"flag"
 	"fmt"
-	"io"
 	"os"
 
 	"github.com/c2sp/wycheproof/vectorgen"
@@ -46,13 +45,7 @@ Flags:
 		return 2
 	}
 
-	var envBytes []byte
-	var err error
-	if *input == "-" {
-		envBytes, err = io.ReadAll(os.Stdin)
-	} else {
-		envBytes, err = os.ReadFile(*input)
-	}
+	envBytes, err := readEnvelope(*input)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "vectorgen add: %v\n", err)
 		return 1
