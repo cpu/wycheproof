@@ -9,6 +9,7 @@
 //	add     [flags]               Append a group, or append into an existing group.
 //	update  [flags]               Patch existing tests in place.
 //	replace [flags]               Swap a whole group for a fresh one in place.
+//	scaffold add [flags]          Emit a placeholder envelope to fill in.
 package main
 
 import (
@@ -35,6 +36,8 @@ func main() {
 		os.Exit(runUpdate(args))
 	case "replace":
 		os.Exit(runReplace(args))
+	case "scaffold":
+		os.Exit(runScaffold(args))
 	case "-h", "--help", "help":
 		usage(os.Stdout)
 		os.Exit(0)
@@ -54,6 +57,7 @@ Usage:
   vectorgen add     --vectors <file> --input <envelope>|- [flags]
   vectorgen update  --vectors <glob> --input <envelope>|- [flags]
   vectorgen replace --vectors <file> --source <name>[@<v>] --input <envelope>|- [flags]
+  vectorgen scaffold add --schema <name> [flags]
 
 Subcommands:
   fmt      Normalize formatting of vector JSON files in place.
@@ -66,6 +70,8 @@ Subcommands:
            tests by tcId within source-filtered groups.
   replace  Swap the single group matching --source for a fresh group from the
            envelope, preserving the original group's position in the file.
+  scaffold add  Emit a placeholder AddEnvelope skeleton for the given schema,
+           with type-appropriate placeholders for the operator to fill in.
 
 Glob patterns for fmt and update are expanded with Go's filepath.Glob
 (shell-style, no recursion).
