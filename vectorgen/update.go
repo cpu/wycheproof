@@ -176,9 +176,8 @@ func applyPatches(root RawObject, env UpdateEnvelope, propOrder []string) (RawOb
 	return root.Set("testGroups", mustMarshalArray(groups)), nil
 }
 
-// indexPatches converts the patches array into a tcId-keyed map.
-//
-// Errors on duplicate or missing tcId.
+// indexPatches converts the patches array into a tcId-keyed map. Errors on
+// duplicate or missing tcId.
 func indexPatches(patches []jsontext.Value) (map[int]RawObject, error) {
 	out := make(map[int]RawObject, len(patches))
 	for i, p := range patches {
@@ -186,18 +185,19 @@ func indexPatches(patches []jsontext.Value) (map[int]RawObject, error) {
 		if err != nil {
 			return nil, fmt.Errorf("patch %d: %w", i, err)
 		}
-
-		tcId, err := readTcId(p)
-		if err != nil {
-			return nil, fmt.Errorf("patch %d: %w", i, err)
+		raw, ok := obj.Get("tcId")
+		if !ok {
+			return nil, fmt.Errorf("patch %d: missing tcId", i)
 		}
-
+		var tcId int
+		if err := json.Unmarshal(raw, &tcId); err != nil {
+			return nil, fmt.Errorf("patch %d: decoding tcId: %w", i, err)
+		}
 		if _, dup := out[tcId]; dup {
 			return nil, fmt.Errorf("patch %d: duplicate tcId %d", i, tcId)
 		}
 		out[tcId] = obj
 	}
-
 	return out, nil
 }
 
@@ -243,16 +243,14 @@ func mergePatch(test jsontext.Value, patch RawObject, propOrder []string, overwr
 }
 
 // insertByPropertyOrder inserts name=value at the position implied by order:
-// after the rightmost existing object key that precedes name in order.
-//
-// If no preceding key is present (or name is not in order), appends at the end.
+// just before the leftmost existing member whose name comes at or after name
+// in order. If no such member exists (or name is not in order), appends at
+// the end.
 func insertByPropertyOrder(obj RawObject, order []string, name string, value jsontext.Value) RawObject {
 	pos := slices.Index(order, name)
 	if pos < 0 {
 		return append(obj, ObjectMember[jsontext.Value]{Name: name, Value: value})
 	}
-
-	// Find the rightmost member of obj whose name appears in order[:pos].
 	insertAt := len(obj)
 	for i := range obj {
 		objPos := slices.Index(order, obj[i].Name)
@@ -264,6 +262,5 @@ func insertByPropertyOrder(obj RawObject, order []string, name string, value jso
 			break
 		}
 	}
-
 	return obj.InsertAt(insertAt, name, value)
 }

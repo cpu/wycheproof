@@ -34,7 +34,7 @@ func ScaffoldAdd(schemaName string, opts Options) ([]byte, error) {
 	if err != nil {
 		return nil, fmt.Errorf("locating testGroups.items: %w", err)
 	}
-	groupTemplate, err := scaffoldObject(root, groupItems, skipSet("tests"))
+	groupTemplate, err := scaffoldObject(root, groupItems, map[string]bool{"tests": true})
 	if err != nil {
 		return nil, fmt.Errorf("scaffolding group template: %w", err)
 	}
@@ -43,7 +43,7 @@ func ScaffoldAdd(schemaName string, opts Options) ([]byte, error) {
 	if err != nil {
 		return nil, fmt.Errorf("locating tests.items: %w", err)
 	}
-	test, err := scaffoldObject(root, testItems, skipSet("tcId"))
+	test, err := scaffoldObject(root, testItems, map[string]bool{"tcId": true})
 	if err != nil {
 		return nil, fmt.Errorf("scaffolding test: %w", err)
 	}
@@ -170,7 +170,8 @@ func placeholderValue(root RawObject, name string, spec RawObject) (jsontext.Val
 }
 
 // placeholderForRef handles $ref by resolving same-document refs and
-// special-casing cross-document refs we know about (common.json#/.../Source).
+// special-casing the cross-document refs we know about (common.json defines
+// Source and Result, the only cross-doc refs the existing schemas use).
 func placeholderForRef(root RawObject, name string, refVal jsontext.Value) (jsontext.Value, error) {
 	var ref string
 	if err := json.Unmarshal(refVal, &ref); err != nil {
@@ -185,15 +186,12 @@ func placeholderForRef(root RawObject, name string, refVal jsontext.Value) (json
 	}
 
 	if strings.HasPrefix(ref, "#/") {
-		resolved, err := resolveRef(root, RawObject{
-			{Name: "$ref", Value: refVal},
-		})
+		resolved, err := resolveRef(root, RawObject{{Name: "$ref", Value: refVal}})
 		if err != nil {
 			return nil, err
 		}
 		return placeholderValue(root, name, resolved)
 	}
-
 	// Cross-document ref we don't recognize; emit an opaque placeholder.
 	return mustMarshal(fmt.Sprintf("<%s>", ref)), nil
 }
@@ -231,23 +229,21 @@ func scalarPlaceholder(root RawObject, path ...string) (jsontext.Value, error) {
 }
 
 // topRequired returns the set of names in the schema's top-level required
-// array. Returns an empty set if the schema doesn't declare one.
+// array. Returns nil if the schema doesn't declare one (callers treat nil
+// like an empty set).
 func topRequired(root RawObject) map[string]bool {
 	requiredVal, ok := root.Get("required")
 	if !ok {
 		return nil
 	}
-
 	var names []string
 	if err := json.Unmarshal(requiredVal, &names); err != nil {
 		return nil
 	}
-
 	out := make(map[string]bool, len(names))
 	for _, n := range names {
 		out[n] = true
 	}
-
 	return out
 }
 
@@ -258,21 +254,9 @@ func decodeStringOr(obj RawObject, name, fallback string) string {
 	if !ok {
 		return fallback
 	}
-
 	var s string
 	if err := json.Unmarshal(v, &s); err != nil {
 		return fallback
 	}
-
 	return s
-}
-
-// skipSet returns a set built from the given names.
-func skipSet(names ...string) map[string]bool {
-	out := make(map[string]bool, len(names))
-	for _, n := range names {
-		out[n] = true
-	}
-
-	return out
 }

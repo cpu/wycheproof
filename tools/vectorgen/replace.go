@@ -48,12 +48,7 @@ Flags:
 		return 1
 	}
 
-	opts := vectorgen.Options{}
-	if *schemasDir != "" {
-		opts.SchemasFS = os.DirFS(*schemasDir)
-	}
-
-	if err := vectorgen.Replace(*vectorPath, env, vectorgen.ParseSourceFilter(*source), opts); err != nil {
+	if err := vectorgen.Replace(*vectorPath, env, vectorgen.ParseSourceFilter(*source), optionsFor(*schemasDir)); err != nil {
 		fmt.Fprintf(os.Stderr, "vectorgen replace: %v\n", err)
 		return 1
 	}

@@ -16,6 +16,8 @@ import (
 	"fmt"
 	"io"
 	"os"
+
+	"github.com/c2sp/wycheproof/vectorgen"
 )
 
 func main() {
@@ -84,4 +86,13 @@ func readEnvelope(path string) ([]byte, error) {
 		return io.ReadAll(os.Stdin)
 	}
 	return os.ReadFile(path)
+}
+
+// optionsFor returns a vectorgen.Options configured to read schemas from
+// schemasDir on disk, or from the embedded FS when schemasDir is empty.
+func optionsFor(schemasDir string) vectorgen.Options {
+	if schemasDir == "" {
+		return vectorgen.Options{}
+	}
+	return vectorgen.Options{SchemasFS: os.DirFS(schemasDir)}
 }

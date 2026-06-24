@@ -81,6 +81,38 @@ func (f SourceFilter) Matches(group RawObject) (bool, error) {
 	return version == f.Version, nil
 }
 
+// findSingleMatchingGroup returns the index of the one group whose source
+// matches filter. Errors with a descriptive message if zero or more than one
+// groups match. The displayLabel is used in error messages (e.g. "--into-group"
+// vs. "source"); leave empty for a generic label.
+func findSingleMatchingGroup(groups []jsontext.Value, filter SourceFilter, displayLabel string) (int, error) {
+	if displayLabel == "" {
+		displayLabel = "source"
+	}
+	var matches []int
+	for i, g := range groups {
+		group, err := parseObject(g)
+		if err != nil {
+			return 0, fmt.Errorf("group %d: %w", i, err)
+		}
+		match, err := filter.Matches(group)
+		if err != nil {
+			return 0, fmt.Errorf("group %d: %w", i, err)
+		}
+		if match {
+			matches = append(matches, i)
+		}
+	}
+	switch len(matches) {
+	case 0:
+		return 0, fmt.Errorf("%s %q matched no group", displayLabel, filter.String())
+	case 1:
+		return matches[0], nil
+	default:
+		return 0, fmt.Errorf("%s %q matched %d groups; disambiguate with name@version", displayLabel, filter.String(), len(matches))
+	}
+}
+
 // getTestGroups extracts the testGroups array as a slice of raw JSON values
 // (one per group), leaving each group's bytes intact.
 func getTestGroups(root RawObject) ([]jsontext.Value, error) {
@@ -111,6 +143,31 @@ func getTestsArray(group RawObject) ([]jsontext.Value, error) {
 	return tests, nil
 }
 
+// eachTest invokes fn for every test in every group, in file order. Halts
+// on the first error fn returns.
+func eachTest(root RawObject, fn func(test jsontext.Value) error) error {
+	groups, err := getTestGroups(root)
+	if err != nil {
+		return err
+	}
+	for i, g := range groups {
+		group, err := parseObject(g)
+		if err != nil {
+			return fmt.Errorf("group %d: %w", i, err)
+		}
+		tests, err := getTestsArray(group)
+		if err != nil {
+			return fmt.Errorf("group %d: %w", i, err)
+		}
+		for _, t := range tests {
+			if err := fn(t); err != nil {
+				return err
+			}
+		}
+	}
+	return nil
+}
+
 // readTcId extracts the tcId integer from a test value.
 func readTcId(test jsontext.Value) (int, error) {
 	obj, err := parseObject(test)
@@ -130,39 +187,34 @@ func readTcId(test jsontext.Value) (int, error) {
 	return id, nil
 }
 
-// jsonEqual reports whether two JSON values are semantically equal, ignoring
-// whitespace and re-canonicalizing both sides.
+// jsonEqual reports whether two JSON values are semantically equal by
+// canonicalizing both sides.
 func jsonEqual(a, b jsontext.Value) bool {
-	ac := append(jsontext.Value(nil), a...)
-	bc := append(jsontext.Value(nil), b...)
-
+	ac, bc := jsontext.Value(bytes.Clone(a)), jsontext.Value(bytes.Clone(b))
 	if err := ac.Canonicalize(); err != nil {
 		return false
 	}
 	if err := bc.Canonicalize(); err != nil {
 		return false
 	}
-
 	return bytes.Equal(ac, bc)
 }
 
-// mustMarshal marshals v with the standard json/v2 settings; panics on error.
-// Used for values we control (strings, slices of strings, integers).
+// mustMarshal panics if v cannot be marshaled. Used for values we control.
 func mustMarshal(v any) jsontext.Value {
 	b, err := json.Marshal(v)
 	if err != nil {
 		panic(fmt.Sprintf("vectorgen: mustMarshal: %v", err))
 	}
-
 	return b
 }
 
-// mustMarshalArray encodes a slice of raw JSON values as a JSON array.
+// mustMarshalArray encodes a slice of raw JSON values as a JSON array,
+// preserving each element's exact bytes.
 func mustMarshalArray(vals []jsontext.Value) jsontext.Value {
 	if len(vals) == 0 {
 		return jsontext.Value("[]")
 	}
-
 	var buf bytes.Buffer
 	buf.WriteByte('[')
 	for i, v := range vals {
@@ -172,7 +224,6 @@ func mustMarshalArray(vals []jsontext.Value) jsontext.Value {
 		buf.Write(v)
 	}
 	buf.WriteByte(']')
-
 	return buf.Bytes()
 }
 

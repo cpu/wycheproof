@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
-	"sort"
+	"slices"
 
 	"github.com/c2sp/wycheproof/vectorgen"
 )
@@ -109,7 +109,6 @@ func expandGlobs(patterns []string) ([]string, error) {
 		}
 		out = append(out, matches...)
 	}
-	sort.Strings(out)
-
+	slices.Sort(out)
 	return out, nil
 }

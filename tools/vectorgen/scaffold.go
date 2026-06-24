@@ -52,12 +52,7 @@ Flags:
 		return 2
 	}
 
-	opts := vectorgen.Options{}
-	if *schemasDir != "" {
-		opts.SchemasFS = os.DirFS(*schemasDir)
-	}
-
-	out, err := vectorgen.ScaffoldAdd(*schema, opts)
+	out, err := vectorgen.ScaffoldAdd(*schema, optionsFor(*schemasDir))
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "vectorgen scaffold add: %v\n", err)
 		return 1

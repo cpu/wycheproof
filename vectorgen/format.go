@@ -15,35 +15,21 @@ import (
 )
 
 // CheckFormatFile reports whether path is already in canonical formatted form.
-// It does not modify the file, use FormatFile for that.
+// Use FormatFile to actually reformat the file.
 func CheckFormatFile(path string) (bool, error) {
-	orig, err := os.ReadFile(path)
+	orig, out, err := formatFileContents(path)
 	if err != nil {
 		return false, err
 	}
-	out, err := FormatBytes(orig)
-	if err != nil {
-		return false, fmt.Errorf("%s: %w", path, err)
-	}
-
 	return bytes.Equal(orig, out), nil
 }
 
-// FormatFile reads path and formats its contents.
-//
-// It writes the result back atomically only if the content changed.
-// It returns true if the file was modified.
-//
-// Use CheckFormatFile to check for formatting consistency without making
-// changes.
+// FormatFile reads path, formats its contents, and writes the result back
+// atomically if anything changed. Returns true if the file was modified.
 func FormatFile(path string) (bool, error) {
-	orig, err := os.ReadFile(path)
+	orig, out, err := formatFileContents(path)
 	if err != nil {
 		return false, err
-	}
-	out, err := FormatBytes(orig)
-	if err != nil {
-		return false, fmt.Errorf("%s: %w", path, err)
 	}
 	if bytes.Equal(orig, out) {
 		return false, nil
@@ -51,7 +37,6 @@ func FormatFile(path string) (bool, error) {
 	if err := writeAtomic(path, out); err != nil {
 		return false, err
 	}
-
 	return true, nil
 }
 
@@ -61,20 +46,31 @@ func FormatFile(path string) (bool, error) {
 // Formatting preserves existing object key order and the raw byte form of
 // scalar values (numbers, strings) — only whitespace is normalized.
 func FormatBytes(in []byte) ([]byte, error) {
-	in = bytes.TrimRight(in, "\n")
-	v := jsontext.Value(append([]byte(nil), in...))
-	if err := v.Format([]jsontext.Options{
+	v := jsontext.Value(bytes.Clone(bytes.TrimRight(in, "\n")))
+	if err := v.Format(
 		jsontext.Multiline(true),
 		jsontext.WithIndent("  "),
 		jsontext.SpaceAfterColon(true),
 		jsontext.PreserveRawStrings(true),
 		jsontext.CanonicalizeRawInts(false),
 		jsontext.CanonicalizeRawFloats(false),
-	}...); err != nil {
+	); err != nil {
 		return nil, fmt.Errorf("formatting JSON: %w", err)
 	}
-
 	return append([]byte(v), '\n'), nil
+}
+
+// formatFileContents reads path and returns (original, formatted) bytes.
+func formatFileContents(path string) (orig, out []byte, err error) {
+	orig, err = os.ReadFile(path)
+	if err != nil {
+		return nil, nil, err
+	}
+	out, err = FormatBytes(orig)
+	if err != nil {
+		return nil, nil, fmt.Errorf("%s: %w", path, err)
+	}
+	return orig, out, nil
 }
 
 // FormatSkipped reports whether path matches a file pattern that is exempt
@@ -89,32 +85,32 @@ func FormatSkipped(path string) bool {
 }
 
 func writeAtomic(path string, data []byte) error {
-	dir := filepath.Dir(path)
-	f, err := os.CreateTemp(dir, ".vectorgen-*.tmp")
+	f, err := os.CreateTemp(filepath.Dir(path), ".vectorgen-*.tmp")
 	if err != nil {
 		return err
 	}
 	tmp := f.Name()
-	cleanup := func() { _ = os.Remove(tmp) }
+	renamed := false
+	defer func() {
+		if !renamed {
+			_ = os.Remove(tmp)
+		}
+	}()
 
 	if _, err := f.Write(data); err != nil {
 		f.Close()
-		cleanup()
 		return err
 	}
 	if err := f.Sync(); err != nil {
 		f.Close()
-		cleanup()
 		return err
 	}
 	if err := f.Close(); err != nil {
-		cleanup()
 		return err
 	}
 	if err := os.Rename(tmp, path); err != nil {
-		cleanup()
 		return err
 	}
-
+	renamed = true
 	return nil
 }

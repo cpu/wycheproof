@@ -4,6 +4,7 @@ import (
 	"encoding/json/jsontext"
 	"encoding/json/v2"
 	"fmt"
+	"slices"
 )
 
 // RawObject is an ordered object whose values are raw JSON bytes.
@@ -12,13 +13,18 @@ import (
 // re-emit the keys we explicitly mutate.
 type RawObject = OrderedObject[jsontext.Value]
 
-// OrderedObject is an ordered sequence of JSON object members.
-//
-// It is the foundation of every vectorgen operation: by typing values
-// as jsontext.Value, subtrees we do not touch round-trip byte-identical.
+// OrderedObject is an ordered sequence of JSON object members. It implements
+// json.MarshalerTo and json.UnmarshalerFrom so it round-trips through
+// encoding/json/v2 preserving member order.
 //
 // Adapted from the example in encoding/json/v2's example_orderedobject_test.go.
 type OrderedObject[V any] []ObjectMember[V]
+
+// ObjectMember is a single JSON object member.
+type ObjectMember[V any] struct {
+	Name  string
+	Value V
+}
 
 func (obj *OrderedObject[V]) MarshalJSONTo(enc *jsontext.Encoder) error {
 	if err := enc.WriteToken(jsontext.BeginObject); err != nil {
@@ -33,7 +39,6 @@ func (obj *OrderedObject[V]) MarshalJSONTo(enc *jsontext.Encoder) error {
 			return err
 		}
 	}
-
 	return enc.WriteToken(jsontext.EndObject)
 }
 
@@ -55,34 +60,18 @@ func (obj *OrderedObject[V]) UnmarshalJSONFrom(dec *jsontext.Decoder) error {
 		}
 	}
 	_, err := dec.ReadToken()
-
 	return err
 }
 
-// Get returns the value associated with name, or false if absent.
-//
-// On duplicate names (allowed by the JSON spec, disallowed by our schemas)
-// the first match wins.
+// Get returns the value associated with name, or false if absent. On
+// duplicate names (allowed by the JSON spec, disallowed by our schemas) the
+// first match wins.
 func (obj OrderedObject[V]) Get(name string) (V, bool) {
-	for i := range obj {
-		if obj[i].Name == name {
-			return obj[i].Value, true
-		}
+	if i := obj.IndexOf(name); i >= 0 {
+		return obj[i].Value, true
 	}
 	var zero V
-
 	return zero, false
-}
-
-// Set replaces the value for name if it exists, or appends a new member if not.
-// Returns the (possibly modified) slice.
-func (obj OrderedObject[V]) Set(name string, value V) OrderedObject[V] {
-	if i := obj.IndexOf(name); i >= 0 {
-		obj[i].Value = value
-		return obj
-	}
-
-	return append(obj, ObjectMember[V]{Name: name, Value: value})
 }
 
 // IndexOf returns the position of name in the object, or -1 if absent.
@@ -92,27 +81,23 @@ func (obj OrderedObject[V]) IndexOf(name string) int {
 			return i
 		}
 	}
-
 	return -1
 }
 
-// InsertAt inserts a new member at position i. Panics if i is out of range.
-func (obj OrderedObject[V]) InsertAt(i int, name string, value V) OrderedObject[V] {
-	if i < 0 || i > len(obj) {
-		panic(fmt.Sprintf("vectorgen: InsertAt index %d out of range [0,%d]", i, len(obj)))
+// Set replaces the value for name if it exists, or appends a new member if
+// not. Returns the (possibly grown) slice.
+func (obj OrderedObject[V]) Set(name string, value V) OrderedObject[V] {
+	if i := obj.IndexOf(name); i >= 0 {
+		obj[i].Value = value
+		return obj
 	}
-	m := ObjectMember[V]{Name: name, Value: value}
-	obj = append(obj, ObjectMember[V]{})
-	copy(obj[i+1:], obj[i:])
-	obj[i] = m
-
-	return obj
+	return append(obj, ObjectMember[V]{Name: name, Value: value})
 }
 
-// ObjectMember is a single JSON object member.
-type ObjectMember[V any] struct {
-	Name  string
-	Value V
+// InsertAt inserts a new member at position i. Panics if i is out of range
+// (a programmer error; callers are package-internal).
+func (obj OrderedObject[V]) InsertAt(i int, name string, value V) OrderedObject[V] {
+	return slices.Insert(obj, i, ObjectMember[V]{Name: name, Value: value})
 }
 
 // parseObject decodes a JSON object value into an ordered RawObject.

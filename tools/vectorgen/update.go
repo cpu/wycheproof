@@ -60,11 +60,7 @@ Flags:
 		return 1
 	}
 
-	opts := vectorgen.Options{}
-	if *schemasDir != "" {
-		opts.SchemasFS = os.DirFS(*schemasDir)
-	}
-
+	opts := optionsFor(*schemasDir)
 	var succeeded, failed []string
 	for _, path := range files {
 		if err := vectorgen.Update(path, env, opts); err != nil {

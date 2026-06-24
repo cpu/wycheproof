@@ -16,6 +16,46 @@ import (
 	"github.com/santhosh-tekuri/jsonschema/v6"
 )
 
+// LintOptions configures Lint.
+type LintOptions struct {
+	// SchemasFS is the filesystem containing schema files. If nil, the
+	// embedded wycheproof.Schemas is used.
+	SchemasFS fs.FS
+
+	// VectorDirs lists directories to scan for vector files. If empty, scans
+	// "testvectors_v1" on disk.
+	VectorDirs []string
+
+	// Filter, if non-nil, restricts linting to vector filenames matching the
+	// regexp.
+	Filter *regexp.Regexp
+
+	// Log, if non-nil, receives a one-line message per vector processed.
+	Log func(format string, args ...any)
+}
+
+// LintResults summarizes a Lint run.
+type LintResults struct {
+	Total    int
+	Valid    int
+	Invalid  int
+	NoSchema int
+	Ignored  int
+}
+
+// Sentinel errors LintBytes returns when a vector is structurally valid but
+// could not be fully schema-validated. Callers that categorize results (e.g.
+// vectorgen lint) use errors.Is to distinguish these from real validation
+// failures.
+var (
+	// ErrNoSchema is returned when a vector does not declare a schema.
+	ErrNoSchema = errors.New("no schema specified")
+
+	// ErrIgnoredSchema is returned when a vector references a schema in our
+	// missingSchemas allow-list (vectors awaiting a schema port).
+	ErrIgnoredSchema = errors.New("schema is in the missing-schema allow-list")
+)
+
 // Lint walks the configured vector directories and validates every *.json
 // vector against its declared schema and against structural invariants
 // (single test-group type per file, unique tcIds, accurate numberOfTests).
@@ -31,17 +71,72 @@ func Lint(opts LintOptions) (LintResults, error) {
 		opts.VectorDirs = []string{"testvectors_v1"}
 	}
 
+	compiler, err := newSchemaCompiler(opts.SchemasFS)
+	if err != nil {
+		return LintResults{}, fmt.Errorf("building schema compiler: %w", err)
+	}
+
 	var results LintResults
 	for _, dir := range opts.VectorDirs {
-		if err := lintDir(opts.SchemasFS, dir, opts.Filter, opts.Log, &results); err != nil {
+		if err := lintDir(compiler, dir, opts.Filter, opts.Log, &results); err != nil {
 			return results, err
 		}
 	}
-
 	return results, nil
 }
 
-func lintDir(schemasFS fs.FS, dir string, filter *regexp.Regexp, logf func(string, ...any), results *LintResults) error {
+// LintBytes validates a single vector file's bytes against its declared
+// schema and against structural invariants. Returns nil if the vector is
+// fully valid, ErrNoSchema or ErrIgnoredSchema for tolerable cases, or a
+// wrapped error describing the validation failure.
+//
+// For bulk validation, Lint reuses a single compiled schema set; prefer it
+// over many LintBytes calls.
+func LintBytes(data []byte, schemasFS fs.FS) error {
+	compiler, err := newSchemaCompiler(schemasFS)
+	if err != nil {
+		return fmt.Errorf("building schema compiler: %w", err)
+	}
+	return lintBytesWith(compiler, data)
+}
+
+// lintBytesWith does the structural and schema validation work, reusing a
+// pre-built compiler. The split lets Lint amortize compiler construction
+// across many files; LintBytes is a one-shot wrapper.
+func lintBytesWith(compiler *jsonschema.Compiler, data []byte) error {
+	if err := lintTestGroups(data); err != nil {
+		return err
+	}
+
+	var ref struct {
+		Schema string `json:"schema"`
+	}
+	if err := json.Unmarshal(data, &ref); err != nil {
+		return fmt.Errorf("invalid vector JSON: %w", err)
+	}
+	if ref.Schema == "" {
+		return ErrNoSchema
+	}
+	if missingSchemas[ref.Schema] {
+		return fmt.Errorf("%w: %q", ErrIgnoredSchema, ref.Schema)
+	}
+
+	schema, err := compiler.Compile(ref.Schema)
+	if err != nil {
+		return fmt.Errorf("invalid schema %q: %w", ref.Schema, err)
+	}
+
+	var instance any
+	if err := json.Unmarshal(data, &instance); err != nil {
+		return fmt.Errorf("invalid vector JSON: %w", err)
+	}
+	if err := schema.Validate(instance); err != nil {
+		return fmt.Errorf("doesn't validate with schema: %w", err)
+	}
+	return nil
+}
+
+func lintDir(compiler *jsonschema.Compiler, dir string, filter *regexp.Regexp, logf func(string, ...any), results *LintResults) error {
 	return filepath.WalkDir(dir, func(path string, d fs.DirEntry, err error) error {
 		if err != nil {
 			return err
@@ -60,7 +155,7 @@ func lintDir(schemasFS fs.FS, dir string, filter *regexp.Regexp, logf func(strin
 			return fmt.Errorf("read %s: %w", path, err)
 		}
 
-		switch err := LintBytes(data, schemasFS); {
+		switch err := lintBytesWith(compiler, data); {
 		case err == nil:
 			logf("✅ %q: valid", path)
 			results.Valid++
@@ -77,89 +172,6 @@ func lintDir(schemasFS fs.FS, dir string, filter *regexp.Regexp, logf func(strin
 		return nil
 	})
 }
-
-// LintOptions configures Lint.
-type LintOptions struct {
-	// SchemasFS is the filesystem containing schema files. If nil, the embedded
-	// wycheproof.Schemas is used.
-	SchemasFS fs.FS
-
-	// VectorDirs lists directories to scan for vector files. If empty, scans
-	// "testvectors_v1" on disk.
-	VectorDirs []string
-
-	// Filter, if non-nil, restricts linting to vector filenames matching the
-	// regexp.
-	Filter *regexp.Regexp
-
-	// Log, if non-nil, receives a one-line message per vector processed. The
-	// summary is returned in LintResults; callers can decide whether to print it.
-	Log func(format string, args ...any)
-}
-
-// LintResults summarizes a Lint run.
-type LintResults struct {
-	Total    int
-	Valid    int
-	Invalid  int
-	NoSchema int
-	Ignored  int
-}
-
-// LintBytes validates a single vector file's bytes against its declared
-// schema and against structural invariants. Returns nil if the vector is
-// fully valid, ErrNoSchema or ErrIgnoredSchema for tolerable cases, or a
-// wrapped error describing the validation failure.
-func LintBytes(data []byte, schemasFS fs.FS) error {
-	if err := lintTestGroups(data); err != nil {
-		return err
-	}
-
-	var ref struct {
-		Schema string `json:"schema"`
-	}
-	if err := json.Unmarshal(data, &ref); err != nil {
-		return fmt.Errorf("invalid vector JSON: %w", err)
-	}
-	if ref.Schema == "" {
-		return ErrNoSchema
-	}
-	if missingSchemas[ref.Schema] {
-		return fmt.Errorf("%w: %q", ErrIgnoredSchema, ref.Schema)
-	}
-
-	compiler, err := newSchemaCompiler(schemasFS)
-	if err != nil {
-		return fmt.Errorf("building schema compiler: %w", err)
-	}
-	schema, err := compiler.Compile(ref.Schema)
-	if err != nil {
-		return fmt.Errorf("invalid schema %q: %w", ref.Schema, err)
-	}
-
-	var instance any
-	if err := json.Unmarshal(data, &instance); err != nil {
-		return fmt.Errorf("invalid vector JSON: %w", err)
-	}
-	if err := schema.Validate(instance); err != nil {
-		return fmt.Errorf("doesn't validate with schema: %w", err)
-	}
-
-	return nil
-}
-
-// Sentinel errors LintBytes returns when a vector is structurally valid but
-// could not be fully schema-validated. Callers that categorize results (e.g.
-// vectorgen lint) use errors.Is to distinguish these from real validation
-// failures.
-var (
-	// ErrNoSchema is returned when a vector does not declare a schema.
-	ErrNoSchema = errors.New("no schema specified")
-
-	// ErrIgnoredSchema is returned when a vector references a schema in our
-	// missingSchemas allow-list (vectors awaiting a schema port).
-	ErrIgnoredSchema = errors.New("schema is in the missing-schema allow-list")
-)
 
 func lintTestGroups(data []byte) error {
 	var v struct {

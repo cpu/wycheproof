@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"io/fs"
 	"os"
+	"strconv"
 )
 
 // Add applies env to the vector file at vectorPath. If the file does not
@@ -91,10 +92,9 @@ type AddEnvelope struct {
 	IntoGroup string `json:"-"`
 }
 
-// addNewFile is Add's helper for initializing a brand-new file.
-//
-// The target does not exist, we synthesize a new file from env using
-// schema-required field ordering at the top level.
+// addNewFile is Add's helper for initializing a brand-new file. The target
+// does not exist; we synthesize a new file from env using schema-properties
+// field ordering at the top level.
 func addNewFile(vectorPath string, env AddEnvelope, opts Options) error {
 	if env.Algorithm == "" {
 		return errors.New("creating a new file requires envelope.algorithm")
@@ -183,36 +183,15 @@ func appendNewGroup(root RawObject, groupTemplate jsontext.Value, tests []jsonte
 }
 
 // appendIntoGroup appends tests to an existing group identified by source.
-//
 // source may be "name" or "name@version".
 func appendIntoGroup(root RawObject, source string, tests []jsontext.Value) (RawObject, error) {
-	filter := ParseSourceFilter(source)
-
 	groups, err := getTestGroups(root)
 	if err != nil {
 		return nil, err
 	}
-
-	var matches []int
-	for i, g := range groups {
-		group, err := parseObject(g)
-		if err != nil {
-			return nil, fmt.Errorf("group %d: parsing: %w", i, err)
-		}
-
-		match, err := filter.Matches(group)
-		if err != nil {
-			return nil, fmt.Errorf("group %d: %w", i, err)
-		}
-		if match {
-			matches = append(matches, i)
-		}
-	}
-	if len(matches) == 0 {
-		return nil, fmt.Errorf("--into-group %q matched no group", source)
-	}
-	if len(matches) > 1 {
-		return nil, fmt.Errorf("--into-group %q matched %d groups; disambiguate with name@version", source, len(matches))
+	idx, err := findSingleMatchingGroup(groups, ParseSourceFilter(source), "--into-group")
+	if err != nil {
+		return nil, err
 	}
 
 	startID, err := nextTcId(root)
@@ -224,20 +203,15 @@ func appendIntoGroup(root RawObject, source string, tests []jsontext.Value) (Raw
 		return nil, err
 	}
 
-	idx := matches[0]
 	group, err := parseObject(groups[idx])
 	if err != nil {
 		return nil, err
 	}
-
 	existingTests, err := getTestsArray(group)
 	if err != nil {
 		return nil, err
 	}
-
-	for _, t := range numbered {
-		existingTests = append(existingTests, t)
-	}
+	existingTests = append(existingTests, numbered...)
 	group = group.Set("tests", mustMarshalArray(existingTests))
 
 	updated, err := json.Marshal(&group)
@@ -245,25 +219,21 @@ func appendIntoGroup(root RawObject, source string, tests []jsontext.Value) (Raw
 		return nil, err
 	}
 	groups[idx] = updated
-
 	return root.Set("testGroups", mustMarshalArray(groups)), nil
 }
 
-// mergeNotes inserts each note from add into root.notes.
-//
-// Conflicting entries (same key, byte-different value) are rejected.
-// Insertion order matches the add envelope.
+// mergeNotes inserts each note from add into root.notes. Conflicting entries
+// (same key, byte-different value) are rejected; insertion order matches the
+// add envelope.
 func mergeNotes(root RawObject, add RawObject) (RawObject, error) {
-	notesIdx := root.IndexOf("notes")
 	var notes RawObject
-	if notesIdx >= 0 {
+	if raw, ok := root.Get("notes"); ok {
 		var err error
-		notes, err = parseObject(root[notesIdx].Value)
+		notes, err = parseObject(raw)
 		if err != nil {
 			return nil, fmt.Errorf("parsing notes: %w", err)
 		}
 	}
-
 	for _, m := range add {
 		if existing, ok := notes.Get(m.Name); ok {
 			if !jsonEqual(existing, m.Value) {
@@ -271,85 +241,51 @@ func mergeNotes(root RawObject, add RawObject) (RawObject, error) {
 			}
 			continue
 		}
-		notes = append(notes, ObjectMember[jsontext.Value]{Name: m.Name, Value: m.Value})
+		notes = append(notes, m)
 	}
-
 	encoded, err := json.Marshal(&notes)
 	if err != nil {
 		return nil, err
 	}
-
 	return root.Set("notes", encoded), nil
 }
 
 // recomputeNumberOfTests counts every test across every group and writes the
-// total to root.numberOfTests.
-//
-// If the field doesn't exist, it is created.
+// total to root.numberOfTests, creating the field if absent.
 func recomputeNumberOfTests(root RawObject) (RawObject, error) {
-	groups, err := getTestGroups(root)
-	if err != nil {
+	total := 0
+	if err := eachTest(root, func(jsontext.Value) error {
+		total++
+		return nil
+	}); err != nil {
 		return nil, err
 	}
-
-	total := 0
-	for i, g := range groups {
-		group, err := parseObject(g)
-		if err != nil {
-			return nil, fmt.Errorf("group %d: %w", i, err)
-		}
-
-		tests, err := getTestsArray(group)
-		if err != nil {
-			return nil, fmt.Errorf("group %d: %w", i, err)
-		}
-		total += len(tests)
-	}
-
-	return root.Set("numberOfTests", jsontext.Value(fmt.Sprintf("%d", total))), nil
+	return root.Set("numberOfTests", jsontext.Value(strconv.Itoa(total))), nil
 }
 
 // nextTcId returns max(tcId across all tests in all groups) + 1, or 1 if the
 // file currently has no tests.
 func nextTcId(root RawObject) (int, error) {
-	groups, err := getTestGroups(root)
+	maxID := 0
+	err := eachTest(root, func(t jsontext.Value) error {
+		id, err := readTcId(t)
+		if err != nil {
+			return err
+		}
+		if id > maxID {
+			maxID = id
+		}
+		return nil
+	})
 	if err != nil {
 		return 0, err
 	}
-
-	maxID := 0
-	for i, g := range groups {
-		group, err := parseObject(g)
-		if err != nil {
-			return 0, fmt.Errorf("group %d: %w", i, err)
-		}
-
-		tests, err := getTestsArray(group)
-		if err != nil {
-			return 0, fmt.Errorf("group %d: %w", i, err)
-		}
-
-		for j, t := range tests {
-			id, err := readTcId(t)
-			if err != nil {
-				return 0, fmt.Errorf("group %d test %d: %w", i, j, err)
-			}
-			if id > maxID {
-				maxID = id
-			}
-		}
-	}
-
 	return maxID + 1, nil
 }
 
-// renumberTests returns a parallel slice with tcId set to startID,
-// startID+1, ...
-//
-// If a test already contains a tcId, it is overwritten (we treat
-// operator-supplied tcId as advisory. The tool is authoritative). Each
-// returned test has tcId as its first field for consistency with existing
-// vectors.
+// renumberTests returns a parallel slice with tcId set to startID, startID+1,
+// ... Operator-supplied tcIds are overwritten — the tool is authoritative.
+// Newly-inserted tcIds appear as the first field, matching existing vectors.
 func renumberTests(tests []jsontext.Value, startID int) ([]jsontext.Value, error) {
 	out := make([]jsontext.Value, len(tests))
 	for i, t := range tests {
@@ -357,21 +293,18 @@ func renumberTests(tests []jsontext.Value, startID int) ([]jsontext.Value, error
 		if err != nil {
 			return nil, fmt.Errorf("test %d: %w", i, err)
 		}
-
-		tcId := jsontext.Value(fmt.Sprintf("%d", startID+i))
+		tcId := jsontext.Value(strconv.Itoa(startID + i))
 		if obj.IndexOf("tcId") < 0 {
 			obj = obj.InsertAt(0, "tcId", tcId)
 		} else {
 			obj = obj.Set("tcId", tcId)
 		}
-
 		encoded, err := json.Marshal(&obj)
 		if err != nil {
 			return nil, fmt.Errorf("test %d: %w", i, err)
 		}
 		out[i] = encoded
 	}
-
 	return out, nil
 }
 

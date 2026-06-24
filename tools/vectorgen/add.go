@@ -65,12 +65,7 @@ Flags:
 		}
 	}
 
-	opts := vectorgen.Options{}
-	if *schemasDir != "" {
-		opts.SchemasFS = os.DirFS(*schemasDir)
-	}
-
-	if err := vectorgen.Add(*vectorPath, env, opts); err != nil {
+	if err := vectorgen.Add(*vectorPath, env, optionsFor(*schemasDir)); err != nil {
 		fmt.Fprintf(os.Stderr, "vectorgen add: %v\n", err)
 		return 1
 	}

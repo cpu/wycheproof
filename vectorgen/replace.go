@@ -80,26 +80,9 @@ func replaceGroup(root RawObject, filter SourceFilter, groupTemplate jsontext.Va
 	if err != nil {
 		return nil, err
 	}
-
-	var matches []int
-	for i, g := range groups {
-		group, err := parseObject(g)
-		if err != nil {
-			return nil, fmt.Errorf("group %d: %w", i, err)
-		}
-		match, err := filter.Matches(group)
-		if err != nil {
-			return nil, fmt.Errorf("group %d: %w", i, err)
-		}
-		if match {
-			matches = append(matches, i)
-		}
-	}
-	if len(matches) == 0 {
-		return nil, fmt.Errorf("source %q matched no group", filter.String())
-	}
-	if len(matches) > 1 {
-		return nil, fmt.Errorf("source %q matched %d groups; disambiguate with name@version", filter.String(), len(matches))
+	idx, err := findSingleMatchingGroup(groups, filter, "source")
+	if err != nil {
+		return nil, err
 	}
 
 	newGroup, err := parseObject(groupTemplate)
@@ -120,8 +103,7 @@ func replaceGroup(root RawObject, filter SourceFilter, groupTemplate jsontext.Va
 	if err != nil {
 		return nil, err
 	}
-	groups[matches[0]] = encoded
-
+	groups[idx] = encoded
 	return root.Set("testGroups", mustMarshalArray(groups)), nil
 }
 
