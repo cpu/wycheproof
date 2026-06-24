@@ -85,3 +85,39 @@ func TestScaffoldAddRoundTrip(t *testing.T) {
 		t.Errorf("scaffold->Add output failed lint: %v", err)
 	}
 }
+
+// TestScaffoldAddCrossDocRefs verifies that scaffolding succeeds for schemas
+// whose test-vector definition lives in a cross-document $ref. Before the
+// resolver was extended these would error out; this test guards against
+// regression. The 10 schemas listed are every schema in the tree that hits
+// the cross-doc path at tests.items.
+func TestScaffoldAddCrossDocRefs(t *testing.T) {
+	schemas := []string{
+		"bls_sig_verify_schema.json",
+		"dsa_p1363_verify_schema_v1.json",
+		"dsa_verify_schema_v1.json",
+		"ecdsa_p1363_verify_schema_v1.json",
+		"ecdsa_verify_schema_v1.json",
+		"eddsa_verify_schema_v1.json",
+		"mldsa_sign_noseed_schema.json",
+		"mldsa_sign_seed_schema.json",
+		"rsassa_pkcs1_generate_schema_v1.json",
+		"rsassa_pkcs1_verify_schema_v1.json",
+	}
+	for _, s := range schemas {
+		t.Run(s, func(t *testing.T) {
+			out, err := vectorgen.ScaffoldAdd(s, vectorgen.Options{})
+			if err != nil {
+				t.Fatalf("ScaffoldAdd: %v", err)
+			}
+			// Sanity: every cross-doc-resolved test vector defines a tcId
+			// (which we skip) plus standard fields. The resolved test object
+			// should at minimum contain "msg", "sig", and "result".
+			for _, want := range []string{`"msg":`, `"sig":`, `"result":`} {
+				if !bytes.Contains(out, []byte(want)) {
+					t.Errorf("scaffold for %s missing %q\noutput:\n%s", s, want, out)
+				}
+			}
+		})
+	}
+}

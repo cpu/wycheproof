@@ -23,6 +23,19 @@ func TestTestVectorProperties(t *testing.T) {
 			schema: "mldsa_verify_schema.json",
 			want:   []string{"tcId", "comment", "msg", "ctx", "sig", "result", "flags"},
 		},
+		{
+			// Cross-doc ref: tests.items -> signatures_common.json#/definitions/AsnSignatureTestVector
+			name:   "ecdsa_verify (cross-doc tests.items ref)",
+			schema: "ecdsa_verify_schema_v1.json",
+			want:   []string{"tcId", "comment", "msg", "sig", "result", "flags"},
+		},
+		{
+			// Cross-doc ref into mldsa_sign_common.json, which itself uses
+			// same-doc refs internally.
+			name:   "mldsa_sign_seed (cross-doc tests.items ref)",
+			schema: "mldsa_sign_seed_schema.json",
+			want:   []string{"tcId", "comment", "msg", "ctx", "rnd", "mu", "sig", "result", "flags"},
+		},
 	}
 	for _, c := range cases {
 		t.Run(c.name, func(t *testing.T) {

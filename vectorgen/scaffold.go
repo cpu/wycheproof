@@ -20,30 +20,32 @@ import (
 // The returned bytes are formatted (multi-line, indented) and end in a
 // trailing newline, ready to write to a file or pipe to `vectorgen add`.
 func ScaffoldAdd(schemaName string, opts Options) ([]byte, error) {
-	root, err := loadSchema(opts.SchemasFS, schemaName)
+	r := newSchemaResolver(opts.SchemasFS)
+	root, err := r.load(schemaName)
 	if err != nil {
 		return nil, err
 	}
+	rootNode := schemaNode{obj: root, root: root}
 
-	algorithm, err := scalarPlaceholder(root, "properties", "algorithm")
+	algorithm, err := r.scalarPlaceholder(rootNode, "properties", "algorithm")
 	if err != nil {
 		return nil, fmt.Errorf("scaffolding algorithm: %w", err)
 	}
 
-	groupItems, err := navigate(root, root, "properties", "testGroups", "items")
+	groupItems, err := r.navigate(rootNode, "properties", "testGroups", "items")
 	if err != nil {
 		return nil, fmt.Errorf("locating testGroups.items: %w", err)
 	}
-	groupTemplate, err := scaffoldObject(root, groupItems, map[string]bool{"tests": true})
+	groupTemplate, err := r.scaffoldObject(groupItems, map[string]bool{"tests": true})
 	if err != nil {
 		return nil, fmt.Errorf("scaffolding group template: %w", err)
 	}
 
-	testItems, err := navigate(root, groupItems, "properties", "tests", "items")
+	testItems, err := r.navigate(groupItems, "properties", "tests", "items")
 	if err != nil {
 		return nil, fmt.Errorf("locating tests.items: %w", err)
 	}
-	test, err := scaffoldObject(root, testItems, map[string]bool{"tcId": true})
+	test, err := r.scaffoldObject(testItems, map[string]bool{"tcId": true})
 	if err != nil {
 		return nil, fmt.Errorf("scaffolding test: %w", err)
 	}
@@ -80,14 +82,13 @@ func ScaffoldAdd(schemaName string, opts Options) ([]byte, error) {
 	return FormatBytes(encoded)
 }
 
-// scaffoldObject walks the property declarations of objSchema and emits an
+// scaffoldObject walks the property declarations of node.obj and emits an
 // ordered object of placeholder values, skipping any keys named in skip.
-func scaffoldObject(root, objSchema RawObject, skip map[string]bool) (RawObject, error) {
-	propsVal, ok := objSchema.Get("properties")
+func (r *schemaResolver) scaffoldObject(node schemaNode, skip map[string]bool) (RawObject, error) {
+	propsVal, ok := node.obj.Get("properties")
 	if !ok {
 		return RawObject{}, nil
 	}
-
 	props, err := parseObject(propsVal)
 	if err != nil {
 		return nil, fmt.Errorf("parsing properties: %w", err)
@@ -103,31 +104,30 @@ func scaffoldObject(root, objSchema RawObject, skip map[string]bool) (RawObject,
 			return nil, fmt.Errorf("property %q: %w", m.Name, err)
 		}
 
-		value, err := placeholderValue(root, m.Name, spec)
+		value, err := r.placeholderValue(schemaNode{obj: spec, root: node.root}, m.Name)
 		if err != nil {
 			return nil, fmt.Errorf("property %q: %w", m.Name, err)
 		}
+
 		out = append(out, ObjectMember[jsontext.Value]{Name: m.Name, Value: value})
 	}
-
 	return out, nil
 }
 
 // placeholderValue chooses a typed placeholder for a single property based
 // on its schema spec (enum, $ref, type, format).
-func placeholderValue(root RawObject, name string, spec RawObject) (jsontext.Value, error) {
-	if refVal, ok := spec.Get("$ref"); ok {
-		return placeholderForRef(root, name, refVal)
+func (r *schemaResolver) placeholderValue(node schemaNode, name string) (jsontext.Value, error) {
+	if refVal, ok := node.obj.Get("$ref"); ok {
+		return r.placeholderForRef(node, name, refVal)
 	}
-
-	if enumVal, ok := spec.Get("enum"); ok {
+	if enumVal, ok := node.obj.Get("enum"); ok {
 		return placeholderForEnum(enumVal)
 	}
 
-	typeStr := decodeStringOr(spec, "type", "")
+	typeStr := decodeStringOr(node.obj, "type", "")
 	switch typeStr {
 	case "string":
-		format := decodeStringOr(spec, "format", "")
+		format := decodeStringOr(node.obj, "format", "")
 		if format != "" {
 			return mustMarshal(fmt.Sprintf("<%s>", format)), nil
 		}
@@ -138,14 +138,14 @@ func placeholderValue(root RawObject, name string, spec RawObject) (jsontext.Val
 		return jsontext.Value("false"), nil
 	case "array":
 		// One placeholder element if we can derive its type, otherwise empty.
-		if items, ok := spec.Get("items"); ok {
+		if items, ok := node.obj.Get("items"); ok {
 			itemSpec, err := parseObject(items)
 			if err == nil {
 				// Strip a trailing "s" from the field name so an array
 				// called "flags" yields placeholder "<flag>" rather than
 				// "<flags>".
 				itemName := strings.TrimSuffix(name, "s")
-				elem, err := placeholderValue(root, itemName, itemSpec)
+				elem, err := r.placeholderValue(schemaNode{obj: itemSpec, root: node.root}, itemName)
 				if err == nil {
 					return mustMarshalArray([]jsontext.Value{elem}), nil
 				}
@@ -154,11 +154,10 @@ func placeholderValue(root RawObject, name string, spec RawObject) (jsontext.Val
 		return jsontext.Value("[]"), nil
 	case "object", "":
 		// Recurse one level into known-shape sub-objects.
-		obj, err := scaffoldObject(root, spec, nil)
+		obj, err := r.scaffoldObject(node, nil)
 		if err != nil {
 			return nil, err
 		}
-
 		enc, err := json.Marshal(&obj)
 		if err != nil {
 			return nil, err
@@ -169,15 +168,15 @@ func placeholderValue(root RawObject, name string, spec RawObject) (jsontext.Val
 	}
 }
 
-// placeholderForRef handles $ref by resolving same-document refs and
-// special-casing the cross-document refs we know about (common.json defines
-// Source and Result, the only cross-doc refs the existing schemas use).
-func placeholderForRef(root RawObject, name string, refVal jsontext.Value) (jsontext.Value, error) {
+// placeholderForRef resolves a $ref (same-doc or cross-doc) and emits a
+// placeholder for the dereferenced schema. Two specific common.json refs
+// (Source, Result) are short-circuited to operator-friendly placeholders;
+// all other refs are followed via the resolver.
+func (r *schemaResolver) placeholderForRef(node schemaNode, name string, refVal jsontext.Value) (jsontext.Value, error) {
 	var ref string
 	if err := json.Unmarshal(refVal, &ref); err != nil {
 		return nil, fmt.Errorf("decoding $ref: %w", err)
 	}
-
 	switch ref {
 	case "common.json#/definitions/Source":
 		return jsontext.Value(`{"name": "<source name>", "version": "<version>"}`), nil
@@ -185,15 +184,14 @@ func placeholderForRef(root RawObject, name string, refVal jsontext.Value) (json
 		return mustMarshal("<one of: valid, invalid, acceptable>"), nil
 	}
 
-	if strings.HasPrefix(ref, "#/") {
-		resolved, err := resolveRef(root, RawObject{{Name: "$ref", Value: refVal}})
-		if err != nil {
-			return nil, err
-		}
-		return placeholderValue(root, name, resolved)
+	resolved, err := r.resolve(node)
+	if err != nil {
+		// Cross-document ref we can't resolve; emit an opaque placeholder so
+		// the operator can fill it in by hand.
+		return mustMarshal(fmt.Sprintf("<%s>", ref)), nil
 	}
-	// Cross-document ref we don't recognize; emit an opaque placeholder.
-	return mustMarshal(fmt.Sprintf("<%s>", ref)), nil
+
+	return r.placeholderValue(resolved, name)
 }
 
 // placeholderForEnum returns the enum's value if there's only one (e.g. a
@@ -205,10 +203,8 @@ func placeholderForEnum(enumVal jsontext.Value) (jsontext.Value, error) {
 		return nil, fmt.Errorf("decoding enum: %w", err)
 	}
 	if len(values) == 1 {
-		// Single allowed value: fill it in.
 		return mustMarshal(values[0]), nil
 	}
-
 	parts := make([]string, len(values))
 	for i, v := range values {
 		parts[i] = fmt.Sprintf("%v", v)
@@ -218,14 +214,14 @@ func placeholderForEnum(enumVal jsontext.Value) (jsontext.Value, error) {
 }
 
 // scalarPlaceholder returns a placeholder for a single scalar property
-// located at the given path beneath root.
-func scalarPlaceholder(root RawObject, path ...string) (jsontext.Value, error) {
-	spec, err := navigate(root, root, path...)
+// located at the given path beneath node.
+func (r *schemaResolver) scalarPlaceholder(node schemaNode, path ...string) (jsontext.Value, error) {
+	spec, err := r.navigate(node, path...)
 	if err != nil {
 		return nil, err
 	}
 
-	return placeholderValue(root, path[len(path)-1], spec)
+	return r.placeholderValue(spec, path[len(path)-1])
 }
 
 // topRequired returns the set of names in the schema's top-level required
@@ -236,14 +232,17 @@ func topRequired(root RawObject) map[string]bool {
 	if !ok {
 		return nil
 	}
+
 	var names []string
 	if err := json.Unmarshal(requiredVal, &names); err != nil {
 		return nil
 	}
+
 	out := make(map[string]bool, len(names))
 	for _, n := range names {
 		out[n] = true
 	}
+
 	return out
 }
 
@@ -254,9 +253,11 @@ func decodeStringOr(obj RawObject, name, fallback string) string {
 	if !ok {
 		return fallback
 	}
+
 	var s string
 	if err := json.Unmarshal(v, &s); err != nil {
 		return fallback
 	}
+
 	return s
 }

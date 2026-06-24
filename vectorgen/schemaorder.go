@@ -23,31 +23,29 @@ func topLevelProperties(schemasFS fs.FS, schemaName string) ([]string, error) {
 
 // testVectorProperties returns the test-vector object's properties in
 // declaration order, by walking the schema from the top-level down through
-// testGroups.items -> tests.items, following local $refs.
+// testGroups.items -> tests.items, following both same-document and
+// cross-document $refs.
 //
 // The returned slice is the canonical order vectorgen.Update uses to position
 // newly added keys.
-//
-// Schemas in this repo always shape the test-vector definition as either an
-// inline object or a $ref into the same document's #/definitions block; cross-
-// document refs and remote refs are not supported.
 func testVectorProperties(schemasFS fs.FS, schemaName string) ([]string, error) {
-	root, err := loadSchema(schemasFS, schemaName)
+	r := newSchemaResolver(schemasFS)
+	root, err := r.load(schemaName)
 	if err != nil {
 		return nil, err
 	}
 
-	testGroupItems, err := navigate(root, root, "properties", "testGroups", "items")
+	testGroupItems, err := r.navigate(schemaNode{obj: root, root: root}, "properties", "testGroups", "items")
 	if err != nil {
 		return nil, fmt.Errorf("locating testGroups.items: %w", err)
 	}
 
-	testItems, err := navigate(root, testGroupItems, "properties", "tests", "items")
+	testItems, err := r.navigate(testGroupItems, "properties", "tests", "items")
 	if err != nil {
 		return nil, fmt.Errorf("locating tests.items: %w", err)
 	}
 
-	return propertyNames(testItems)
+	return propertyNames(testItems.obj)
 }
 
 // loadSchema reads and parses schemaName from schemasFS (or the embedded FS
@@ -56,14 +54,17 @@ func loadSchema(schemasFS fs.FS, schemaName string) (RawObject, error) {
 	if schemasFS == nil {
 		schemasFS = wycheproof.Schemas
 	}
+
 	data, err := fs.ReadFile(schemasFS, schemaName)
 	if err != nil {
 		return nil, fmt.Errorf("read schema: %w", err)
 	}
+
 	root, err := parseObject(data)
 	if err != nil {
 		return nil, fmt.Errorf("parse schema: %w", err)
 	}
+
 	return root, nil
 }
 
@@ -74,73 +75,138 @@ func propertyNames(obj RawObject) ([]string, error) {
 	if !ok {
 		return nil, errors.New("schema object has no properties")
 	}
+
 	props, err := parseObject(propsVal)
 	if err != nil {
 		return nil, fmt.Errorf("parsing properties: %w", err)
 	}
+
 	names := make([]string, len(props))
 	for i := range props {
 		names[i] = props[i].Name
 	}
+
 	return names, nil
 }
 
-// navigate walks obj following path, resolving any $ref it encounters in the
-// same document (root). $refs to other documents are not supported.
-func navigate(root, obj RawObject, path ...string) (RawObject, error) {
-	cur := obj
+// schemaNode pairs a sub-object with the document it lives in. The document
+// is what subsequent same-document "#/" $refs resolve against; carrying it
+// alongside the object lets us follow cross-document refs without losing
+// track of which document we're now reading from.
+type schemaNode struct {
+	obj  RawObject
+	root RawObject
+}
+
+// schemaResolver loads and caches schema documents, following $refs (both
+// "#/..." within the current document and "other.json#/..." across documents).
+type schemaResolver struct {
+	fs   fs.FS
+	docs map[string]RawObject // parsed root by schema name
+}
+
+func newSchemaResolver(schemasFS fs.FS) *schemaResolver {
+	if schemasFS == nil {
+		schemasFS = wycheproof.Schemas
+	}
+
+	return &schemaResolver{fs: schemasFS, docs: map[string]RawObject{}}
+}
+
+// load reads schemaName, caching the parsed result.
+func (r *schemaResolver) load(schemaName string) (RawObject, error) {
+	if doc, ok := r.docs[schemaName]; ok {
+		return doc, nil
+	}
+
+	data, err := fs.ReadFile(r.fs, schemaName)
+	if err != nil {
+		return nil, fmt.Errorf("read schema %q: %w", schemaName, err)
+	}
+
+	root, err := parseObject(data)
+	if err != nil {
+		return nil, fmt.Errorf("parse schema %q: %w", schemaName, err)
+	}
+	r.docs[schemaName] = root
+
+	return root, nil
+}
+
+// navigate walks node.obj following path, dereferencing $refs as it goes.
+// Returns the final resolved node (so callers reading further "#/" refs from
+// the result use the correct document root).
+func (r *schemaResolver) navigate(node schemaNode, path ...string) (schemaNode, error) {
+	cur, err := r.resolve(node)
+	if err != nil {
+		return schemaNode{}, err
+	}
+
 	for _, step := range path {
-		resolved, err := resolveRef(root, cur)
-		if err != nil {
-			return nil, err
-		}
-		cur = resolved
-
-		next, ok := cur.Get(step)
+		next, ok := cur.obj.Get(step)
 		if !ok {
-			return nil, fmt.Errorf("path step %q not found", step)
+			return schemaNode{}, fmt.Errorf("path step %q not found", step)
 		}
 
-		cur, err = parseObject(next)
+		nextObj, err := parseObject(next)
 		if err != nil {
-			return nil, fmt.Errorf("step %q: %w", step, err)
+			return schemaNode{}, fmt.Errorf("step %q: %w", step, err)
+		}
+
+		cur, err = r.resolve(schemaNode{obj: nextObj, root: cur.root})
+		if err != nil {
+			return schemaNode{}, err
 		}
 	}
 
-	return resolveRef(root, cur)
+	return cur, nil
 }
 
-// resolveRef checks obj for a $ref field; if present and pointing into the
-// same document, returns the referenced object. Otherwise returns obj.
-func resolveRef(root, obj RawObject) (RawObject, error) {
-	refVal, ok := obj.Get("$ref")
+// resolve dereferences node.obj if it carries a $ref, following same-document
+// and cross-document refs. Same-document refs preserve node.root; cross-doc
+// refs switch to the referenced document's root. Returns node unchanged if no
+// $ref is present.
+func (r *schemaResolver) resolve(node schemaNode) (schemaNode, error) {
+	refVal, ok := node.obj.Get("$ref")
 	if !ok {
-		return obj, nil
+		return node, nil
 	}
 
 	var ref string
 	if err := json.Unmarshal(refVal, &ref); err != nil {
-		return nil, fmt.Errorf("decoding $ref: %w", err)
+		return schemaNode{}, fmt.Errorf("decoding $ref: %w", err)
 	}
 
-	if !strings.HasPrefix(ref, "#/") {
-		return nil, fmt.Errorf("only same-document $refs are supported, got %q", ref)
+	docPart, fragment, _ := strings.Cut(ref, "#")
+	root := node.root
+	if docPart != "" {
+		var err error
+		root, err = r.load(docPart)
+		if err != nil {
+			return schemaNode{}, fmt.Errorf("$ref %q: %w", ref, err)
+		}
+	}
+
+	if fragment == "" {
+		// "other.json" with no fragment refers to the entire document.
+		return schemaNode{obj: root, root: root}, nil
+	}
+	if !strings.HasPrefix(fragment, "/") {
+		return schemaNode{}, fmt.Errorf("$ref %q: fragment must start with '/'", ref)
 	}
 
 	cur := root
-	for _, step := range strings.Split(strings.TrimPrefix(ref, "#/"), "/") {
+	for _, step := range strings.Split(strings.TrimPrefix(fragment, "/"), "/") {
 		v, ok := cur.Get(step)
 		if !ok {
-			return nil, fmt.Errorf("$ref %q: step %q not found", ref, step)
+			return schemaNode{}, fmt.Errorf("$ref %q: step %q not found", ref, step)
 		}
-
 		next, err := parseObject(v)
 		if err != nil {
-			return nil, fmt.Errorf("$ref %q step %q: %w", ref, step, err)
+			return schemaNode{}, fmt.Errorf("$ref %q step %q: %w", ref, step, err)
 		}
-
 		cur = next
 	}
 
-	return cur, nil
+	return schemaNode{obj: cur, root: root}, nil
 }
