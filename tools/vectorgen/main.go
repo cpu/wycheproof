@@ -6,7 +6,7 @@
 //
 //	fmt     [--check] <glob>...   Format vector files (or check formatting).
 //	lint    [flags]               Validate vector files against their schemas.
-//	add     [flags]               Append a group, or append into an existing group.
+//	add     [flags]               Add a new group, or append new cases into an existing group.
 //	update  [flags]               Patch existing tests in place.
 //	replace [flags]               Swap a whole group for a fresh one in place.
 //	scaffold add [flags]          Emit a placeholder envelope to fill in.
@@ -20,6 +20,20 @@ import (
 	"github.com/c2sp/wycheproof/vectorgen"
 )
 
+type subCommandHandler = func(args []string) int
+
+var handlers = map[string]subCommandHandler{
+	"fmt":      runFmt,
+	"lint":     runLint,
+	"add":      runAdd,
+	"update":   runUpdate,
+	"replace":  runReplace,
+	"scaffold": runScaffold,
+	"h":        helpHandler,
+	"help":     helpHandler,
+	"--help":   helpHandler,
+}
+
 func main() {
 	if len(os.Args) < 2 {
 		usage(os.Stderr)
@@ -27,27 +41,13 @@ func main() {
 	}
 
 	cmd, args := os.Args[1], os.Args[2:]
-	switch cmd {
-	case "fmt":
-		os.Exit(runFmt(args))
-	case "lint":
-		os.Exit(runLint(args))
-	case "add":
-		os.Exit(runAdd(args))
-	case "update":
-		os.Exit(runUpdate(args))
-	case "replace":
-		os.Exit(runReplace(args))
-	case "scaffold":
-		os.Exit(runScaffold(args))
-	case "-h", "--help", "help":
-		usage(os.Stdout)
-		os.Exit(0)
-	default:
+	handler, found := handlers[cmd]
+	if !found {
 		fmt.Fprintf(os.Stderr, "vectorgen: unknown subcommand %q\n\n", cmd)
 		usage(os.Stderr)
 		os.Exit(2)
 	}
+	os.Exit(handler(args))
 }
 
 func usage(w *os.File) {
@@ -78,6 +78,11 @@ Subcommands:
 Glob patterns for fmt and update are expanded with Go's filepath.Glob
 (shell-style, no recursion).
 `)
+}
+
+func helpHandler(_ []string) int {
+	usage(os.Stdout)
+	return 0
 }
 
 // readEnvelope reads an envelope JSON from path, or from stdin if path is "-".
