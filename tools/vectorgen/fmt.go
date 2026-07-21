@@ -4,8 +4,6 @@ import (
 	"flag"
 	"fmt"
 	"os"
-	"path/filepath"
-	"slices"
 
 	"github.com/c2sp/wycheproof/vectorgen"
 )
@@ -95,20 +93,4 @@ Flags:
 	}
 
 	return 0
-}
-
-func expandGlobs(patterns []string) ([]string, error) {
-	var out []string
-	for _, p := range patterns {
-		matches, err := filepath.Glob(p)
-		if err != nil {
-			return nil, fmt.Errorf("glob %q: %w", p, err)
-		}
-		if len(matches) == 0 {
-			return nil, fmt.Errorf("no files matched %q", p)
-		}
-		out = append(out, matches...)
-	}
-	slices.Sort(out)
-	return out, nil
 }

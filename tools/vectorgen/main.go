@@ -16,6 +16,8 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"path/filepath"
+	"slices"
 
 	"github.com/c2sp/wycheproof/vectorgen"
 )
@@ -100,4 +102,25 @@ func optionsFor(schemasDir string) vectorgen.Options {
 		return vectorgen.Options{}
 	}
 	return vectorgen.Options{SchemasFS: os.DirFS(schemasDir)}
+}
+
+// expandGlobs processes patterns, expanding any filepath globs and returning
+// the matched list of paths in sorted order.
+//
+// It returns an error if no paths match a given glob.
+func expandGlobs(patterns []string) ([]string, error) {
+	var out []string
+	for _, p := range patterns {
+		matches, err := filepath.Glob(p)
+		if err != nil {
+			return nil, fmt.Errorf("glob %q: %w", p, err)
+		}
+		if len(matches) == 0 {
+			return nil, fmt.Errorf("no files matched %q", p)
+		}
+		out = append(out, matches...)
+	}
+	slices.Sort(out)
+
+	return out, nil
 }
